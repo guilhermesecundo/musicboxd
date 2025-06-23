@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { HomeHeader } from "@/components/home-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { ArrowLeft, Search, UserPlus, UserCheck, Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import { useSearchParams } from "next/navigation"
+import React from "react"
 
 interface User {
   id: number
@@ -101,7 +103,12 @@ const getFollowersData = (username: string) => {
 }
 
 export default function FollowersPage({ params }: FollowersPageProps) {
-  const { followers, following } = getFollowersData(params.username)
+  const { username } = React.use(params)
+
+  const searchParams = useSearchParams()
+  const defaultTab = searchParams.get("tab") || "followers"
+
+  const { followers, following } = getFollowersData(username)
   const [searchQuery, setSearchQuery] = useState("")
   const [followersData, setFollowersData] = useState(followers)
   const [followingData, setFollowingData] = useState(following)
@@ -217,84 +224,86 @@ export default function FollowersPage({ params }: FollowersPageProps) {
   )
 
   return (
-    <div className="min-h-screen bg-background">
-      <HomeHeader />
-      <main className="container mx-auto px-4 py-6 max-w-4xl">
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-6">
-          <Button variant="ghost" onClick={() => window.history.back()} className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </Button>
-          <div>
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-              <Users className="h-6 w-6" />@{params.username}'s Network
-            </h1>
-            <p className="text-muted-foreground">Followers and following connections</p>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="min-h-screen bg-background">
+        <HomeHeader />
+        <main className="container mx-auto px-4 py-6 max-w-4xl">
+          {/* Header */}
+          <div className="flex items-center gap-4 mb-6">
+            <Button variant="ghost" onClick={() => window.history.back()} className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold flex items-center gap-2">
+                <Users className="h-6 w-6" />@{username}'s Network
+              </h1>
+              <p className="text-muted-foreground">Followers and following connections</p>
+            </div>
           </div>
-        </div>
 
-        {/* Search */}
-        <div className="relative mb-6">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search users..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
-          />
-        </div>
+          {/* Search */}
+          <div className="relative mb-6">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search users..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+          </div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="followers" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="followers" className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Followers ({filteredFollowers.length})
-            </TabsTrigger>
-            <TabsTrigger value="following" className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Following ({filteredFollowing.length})
-            </TabsTrigger>
-          </TabsList>
+          {/* Tabs */}
+          <Tabs defaultValue={defaultTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="followers" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Followers ({filteredFollowers.length})
+              </TabsTrigger>
+              <TabsTrigger value="following" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Following ({filteredFollowing.length})
+              </TabsTrigger>
+            </TabsList>
 
-          <TabsContent value="followers" className="mt-6">
-            <div className="space-y-4">
-              {filteredFollowers.length > 0 ? (
-                filteredFollowers.map((user) => <UserCard key={user.id} user={user} listType="followers" />)
-              ) : (
-                <Card>
-                  <CardContent className="p-8 text-center">
-                    <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                    <h3 className="text-lg font-semibold mb-2">No followers found</h3>
-                    <p className="text-muted-foreground">
-                      {searchQuery ? "Try adjusting your search terms." : "This user doesn't have any followers yet."}
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </TabsContent>
+            <TabsContent value="followers" className="mt-6">
+              <div className="space-y-4">
+                {filteredFollowers.length > 0 ? (
+                  filteredFollowers.map((user) => <UserCard key={user.id} user={user} listType="followers" />)
+                ) : (
+                  <Card>
+                    <CardContent className="p-8 text-center">
+                      <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="text-lg font-semibold mb-2">No followers found</h3>
+                      <p className="text-muted-foreground">
+                        {searchQuery ? "Try adjusting your search terms." : "This user doesn't have any followers yet."}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
 
-          <TabsContent value="following" className="mt-6">
-            <div className="space-y-4">
-              {filteredFollowing.length > 0 ? (
-                filteredFollowing.map((user) => <UserCard key={user.id} user={user} listType="following" />)
-              ) : (
-                <Card>
-                  <CardContent className="p-8 text-center">
-                    <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                    <h3 className="text-lg font-semibold mb-2">No following found</h3>
-                    <p className="text-muted-foreground">
-                      {searchQuery ? "Try adjusting your search terms." : "This user isn't following anyone yet."}
-                    </p>
-                  </CardContent>
-                </Card>
-              )}
-            </div>
-          </TabsContent>
-        </Tabs>
-      </main>
-    </div>
+            <TabsContent value="following" className="mt-6">
+              <div className="space-y-4">
+                {filteredFollowing.length > 0 ? (
+                  filteredFollowing.map((user) => <UserCard key={user.id} user={user} listType="following" />)
+                ) : (
+                  <Card>
+                    <CardContent className="p-8 text-center">
+                      <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="text-lg font-semibold mb-2">No following found</h3>
+                      <p className="text-muted-foreground">
+                        {searchQuery ? "Try adjusting your search terms." : "This user isn't following anyone yet."}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </main>
+      </div>
+    </Suspense>
   )
 }

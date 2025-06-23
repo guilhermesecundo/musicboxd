@@ -5,6 +5,8 @@ import Image from "next/image"
 import { Camera, MapPin, Calendar, Settings, UserPlus, UserCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 interface User {
   id: number
@@ -25,6 +27,8 @@ interface ProfileHeaderProps {
 }
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
+  const pathname = usePathname();
+
   const [isFollowing, setIsFollowing] = useState(false)
 
   const handleFollowToggle = () => {
@@ -45,14 +49,16 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
 
         {/* Edit Background Button (only for current user) */}
         {user.isCurrentUser && (
-          <Button
-            variant="secondary"
-            size="sm"
-            className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white border-0"
-          >
-            <Camera className="h-4 w-4 mr-2" />
-            Edit Cover
-          </Button>
+          <Link href="/settings">
+            <Button
+              variant="secondary"
+              size="sm"
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white border-0"
+            >
+              <Camera className="h-4 w-4 mr-2" />
+              Edit Cover
+            </Button>
+          </Link>
         )}
       </div>
 
@@ -106,24 +112,30 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
 
             {/* Followers/Following */}
             <div className="flex items-center gap-6 text-sm">
-              <button className="hover:underline">
-                <span className="font-semibold">{user.following.toLocaleString()}</span>
-                <span className="text-muted-foreground ml-1">Following</span>
-              </button>
-              <button className="hover:underline">
-                <span className="font-semibold">{user.followers.toLocaleString()}</span>
-                <span className="text-muted-foreground ml-1">Followers</span>
-              </button>
+              <Link href={`${pathname}/followers?tab=following`}>
+                <button className="hover:underline">
+                  <span className="font-semibold">{user.following.toLocaleString()}</span>
+                  <span className="text-muted-foreground ml-1">Following</span>
+                </button>
+              </Link>
+              <Link href={`${pathname}/followers?tab=followers`}>
+                <button className="hover:underline">
+                  <span className="font-semibold">{user.followers.toLocaleString()}</span>
+                  <span className="text-muted-foreground ml-1">Followers</span>
+                </button>
+              </Link>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
             {user.isCurrentUser ? (
-              <Button variant="outline">
-                <Settings className="h-4 w-4 mr-2" />
-                Edit Profile
-              </Button>
+              <Link href="/settings">
+                <Button variant="outline">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Edit Profile
+                </Button>
+              </Link>
             ) : (
               <Button
                 onClick={handleFollowToggle}

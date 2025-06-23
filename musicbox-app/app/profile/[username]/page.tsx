@@ -4,6 +4,7 @@ import { ProfileHeader } from "@/components/profile-header"
 import { ProfileTabs } from "@/components/profile-tabs"
 import { ListDetailView } from "@/components/list-detail-view"
 import { HomeHeader } from "@/components/home-header"
+import React from "react"
 
 // Mock user data - in a real app, this would come from a database
 const getUserData = (username: string) => {
@@ -46,7 +47,8 @@ interface ProfilePageProps {
 }
 
 export default function ProfilePage({ params }: ProfilePageProps) {
-  const user = getUserData(params.username)
+  const { username } = React.use(params)
+  const user = getUserData(username)
   const [selectedList, setSelectedList] = useState<any>(null)
   const [activeTab, setActiveTab] = useState("activity")
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -76,9 +78,8 @@ export default function ProfilePage({ params }: ProfilePageProps) {
 
         <div className="relative overflow-hidden">
           <div
-            className={`transition-all duration-300 ease-in-out ${
-              isTransitioning ? "opacity-0 transform translate-x-4" : "opacity-100 transform translate-x-0"
-            }`}
+            className={`transition-all duration-300 ease-in-out ${isTransitioning ? "opacity-0 transform translate-x-4" : "opacity-100 transform translate-x-0"
+              }`}
           >
             {selectedList ? (
               <ListDetailView list={selectedList} user={user} onBack={handleBackToLists} />
