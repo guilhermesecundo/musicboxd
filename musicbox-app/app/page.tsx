@@ -71,9 +71,9 @@ export default function LandingPage() {
                   <AnimatedButton variant="gradient" size="lg" asChild>
                     <Link href="/signup">Get Started</Link>
                   </AnimatedButton>
-                  <AnimatedButton variant="outline" size="lg" asChild>
+                  {/* <AnimatedButton variant="outline" size="lg" asChild>
                     <Link href="#">Learn More</Link>
-                  </AnimatedButton>
+                  </AnimatedButton> */}
                 </div>
               </AnimateInView>
               <AnimateInView className="flex items-center justify-center" direction="left" delay={300}>
@@ -284,14 +284,14 @@ export default function LandingPage() {
                 <AnimatedButton size="lg" className="bg-white text-blue-500 hover:bg-blue-50" asChild>
                   <Link href="/signup">Sign Up for Free</Link>
                 </AnimatedButton>
-                <AnimatedButton
+                {/* <AnimatedButton
                   variant="outline"
                   size="lg"
                   className="border-white bg-white/20 text-white hover:bg-white/10 hover:text-pink-200"
                   asChild
                 >
                   <Link href="#">Learn More</Link>
-                </AnimatedButton>
+                </AnimatedButton> */}
               </div>
             </AnimateInView>
           </div>

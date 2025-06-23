@@ -1,13 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { User, Calendar, MapPin, LinkIcon, Save, Edit } from "lucide-react"
+import { User, Calendar, MapPin, LinkIcon, Save, Edit, Camera, Link } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import Image from "next/image"
 
 export function AccountTab() {
   const [isEditing, setIsEditing] = useState(false)

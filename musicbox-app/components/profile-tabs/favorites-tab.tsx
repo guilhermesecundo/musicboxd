@@ -148,52 +148,52 @@ export function FavoritesTab({ user }: FavoritesTabProps) {
           <CardContent>
             <div className="space-y-4">
               {favoriteSongs.map((song) => (
-                <MusicPlayer
-                  key={song.id}
-                  music={{
-                    title: song.title,
-                    artist: song.artist,
-                    album: song.album,
-                    cover: song.cover,
-                    preview: "/placeholder-audio.mp3",
-                    artistId: song.artist
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")
-                      .replace(/[^a-z0-9-]/g, ""),
-                  }}
-                >
-                  <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-                    <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-                      <Image src={song.cover || "/placeholder.svg"} alt={song.title} fill className="object-cover" />
-                    </div>
-
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium truncate hover:text-primary transition-colors">{song.title}</h3>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleArtistClick(song.artist)
-                        }}
-                        className="text-sm text-muted-foreground truncate hover:text-primary transition-colors text-left block"
-                      >
-                        {song.artist}
-                      </button>
-                      <p className="text-xs text-muted-foreground">
-                        {song.album} • {song.year} • {song.duration}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-1">
-                      {Array.from({ length: song.rating }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-
-                    <Button variant="ghost" size="sm" onClick={(e) => e.stopPropagation()}>
-                      <Play className="h-4 w-4" />
-                    </Button>
+                // <MusicPlayer
+                //   key={song.id}
+                //   music={{
+                //     title: song.title,
+                //     artist: song.artist,
+                //     album: song.album,
+                //     cover: song.cover,
+                //     preview: "/placeholder-audio.mp3",
+                //     artistId: song.artist
+                //       .toLowerCase()
+                //       .replace(/\s+/g, "-")
+                //       .replace(/[^a-z0-9-]/g, ""),
+                //   }}
+                // >
+                // </MusicPlayer>
+                <div key={song.id} className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+                  <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+                    <Image src={song.cover || "/placeholder.svg"} alt={song.title} fill className="object-cover" />
                   </div>
-                </MusicPlayer>
+
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium truncate hover:text-primary transition-colors">{song.title}</h3>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleArtistClick(song.artist)
+                      }}
+                      className="text-sm text-muted-foreground truncate hover:text-primary transition-colors text-left block"
+                    >
+                      {song.artist}
+                    </button>
+                    <p className="text-xs text-muted-foreground">
+                      {song.album} • {song.year} • {song.duration}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    {Array.from({ length: song.rating }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+
+                  {/* <Button variant="ghost" size="sm" onClick={(e) => e.stopPropagation()}>
+                      <Play className="h-4 w-4" />
+                    </Button> */}
+                </div>
               ))}
             </div>
           </CardContent>

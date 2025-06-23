@@ -43,10 +43,10 @@ interface ArtistHeaderProps {
 }
 
 export function ArtistHeader({ artist }: ArtistHeaderProps) {
-  const [isFollowing, setIsFollowing] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const handleFollowToggle = () => {
-    setIsFollowing(!isFollowing)
+    setIsFavorite(!isFavorite)
   }
 
   return (
@@ -76,7 +76,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
                 <span className="text-sm font-medium bg-white/20 px-2 py-1 rounded">Artist</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-2">{artist.name}</h1>
-              <div className="flex items-center gap-4 text-sm md:text-base">
+              {/* <div className="flex items-center gap-4 text-sm md:text-base">
                 <div className="flex items-center gap-1">
                   <Headphones className="h-4 w-4" />
                   <span>{artist.monthlyListeners} monthly listeners</span>
@@ -85,7 +85,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
                   <Users className="h-4 w-4" />
                   <span>{artist.followers} followers</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -98,24 +98,24 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
           <div className="flex-1 space-y-6">
             {/* Action Buttons */}
             <div className="flex items-center gap-3 flex-wrap">
-              <Button
+              {/* <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600"
               >
                 <Play className="h-5 w-5 mr-2" />
                 Play
+              </Button> */}
+              <Button variant={isFavorite ? "outline" : "default"} onClick={handleFollowToggle}>
+                <Heart className={`h-4 w-4 mr-2 ${isFavorite ? "fill-current" : ""}`} />
+                {isFavorite ? "Unfavorite" : "Favorite"}
               </Button>
-              <Button variant={isFollowing ? "outline" : "default"} onClick={handleFollowToggle}>
-                <Heart className={`h-4 w-4 mr-2 ${isFollowing ? "fill-current" : ""}`} />
-                {isFollowing ? "Following" : "Follow"}
-              </Button>
-              <Button variant="outline">
+              {/* <Button variant="outline">
                 <Share className="h-4 w-4 mr-2" />
                 Share
               </Button>
               <Button variant="ghost" size="icon">
                 <MoreHorizontal className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
 
             {/* Genres */}
@@ -128,14 +128,14 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
             </div>
 
             {/* Bio */}
-            <div>
+            {/* <div>
               <h3 className="text-lg font-semibold mb-2">About</h3>
               <p className="text-muted-foreground leading-relaxed">{artist.bio}</p>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column - Artist Info */}
-          <div className="lg:w-80 space-y-4">
+          {/* <div className="lg:w-80 space-y-4">
             <Card className="p-4">
               <h3 className="font-semibold mb-3">Artist Info</h3>
               <div className="space-y-3 text-sm">
@@ -180,7 +180,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
                 </div>
               </div>
             </Card>
-          </div>
+          </div> */}
         </div>
       </div>
     </Card>

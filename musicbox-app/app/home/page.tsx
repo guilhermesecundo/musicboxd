@@ -17,10 +17,10 @@ export default function HomePage() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <HotMusic />
             <MusicRecommendations />
-          </div>
+          </div> */}
         </div>
       </main>
     </div>

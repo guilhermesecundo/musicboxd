@@ -153,14 +153,14 @@ export function ActivityFeed() {
               {activity.album && <div className="text-xs text-muted-foreground mt-1">{activity.album}</div>}
             </div>
 
-            <div className="flex items-center gap-1">
+            {/* <div className="flex items-center gap-1">
               <Button variant="ghost" size="sm">
                 <Heart className="h-4 w-4" />
               </Button>
               <Button variant="ghost" size="sm">
                 <MessageCircle className="h-4 w-4" />
               </Button>
-            </div>
+            </div> */}
           </div>
         ))}
         <div className="pt-4 border-t">

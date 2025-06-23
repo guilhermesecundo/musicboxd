@@ -191,7 +191,7 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
         {/* List Info */}
         <div className="flex-1 space-y-4">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-200">
+            {/* <div className="flex items-center gap-2 animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-200">
               <Badge variant={list.isPublic ? "default" : "secondary"}>
                 {list.isPublic ? (
                   <>
@@ -205,7 +205,7 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
                   </>
                 )}
               </Badge>
-            </div>
+            </div> */}
 
             <h1 className="text-4xl font-bold animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-300">
               {list.title}
@@ -220,13 +220,13 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
                 <AvatarFallback>{user.displayName[0]}</AvatarFallback>
               </Avatar>
               <span className="font-medium">{user.displayName}</span>
-              <span className="text-muted-foreground">•</span>
+              {/* <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">{tracks.length} songs</span>
               <span className="text-muted-foreground">•</span>
-              <span className="text-muted-foreground">{formatTotalDuration(totalDuration)}</span>
+              <span className="text-muted-foreground">{formatTotalDuration(totalDuration)}</span> */}
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-muted-foreground animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-600">
+            {/* <div className="flex items-center gap-2 text-sm text-muted-foreground animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-600">
               <Calendar className="h-4 w-4" />
               <span>Created {list.createdAt}</span>
               {list.isPublic && list.likes > 0 && (
@@ -236,25 +236,14 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
                   <span>{list.likes} likes</span>
                 </>
               )}
-            </div>
+            </div> */}
           </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3 animate-in fade-in-0 slide-in-from-bottom-4 duration-300 delay-700">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 transition-all duration-200"
-            >
-              <Play className="h-5 w-5 mr-2" />
-              Play
-            </Button>
-            <Button size="lg" variant="outline" className="transition-all duration-200">
-              <Shuffle className="h-5 w-5 mr-2" />
-              Shuffle
-            </Button>
-            <Button size="lg" variant="outline" className="transition-all duration-200">
+            {/* <Button size="lg" variant="outline" className="transition-all duration-200">
               <Heart className="h-5 w-5" />
-            </Button>
+            </Button> */}
             <Button size="lg" variant="outline" className="transition-all duration-200">
               <Share2 className="h-5 w-5" />
             </Button>
@@ -278,9 +267,6 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
                 )}
               </Button>
             )}
-            <Button size="lg" variant="outline" className="transition-all duration-200">
-              <MoreHorizontal className="h-5 w-5" />
-            </Button>
           </div>
         </div>
       </div>
@@ -322,100 +308,102 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
           {/* Tracks */}
           <div className="divide-y">
             {tracks.map((track, index) => (
-              <MusicPlayer
+              // <MusicPlayer
+              //   key={track.id}
+              //   music={{
+              //     title: track.title,
+              //     artist: track.artist,
+              //     album: track.album,
+              //     cover: track.coverArt,
+              //     preview: "/placeholder-audio.mp3", // Add actual preview URL
+              //     artistId: track.artist
+              //       .toLowerCase()
+              //       .replace(/\s+/g, "-")
+              //       .replace(/[^a-z0-9-]/g, ""),
+              //   }}
+              // >
+              // </MusicPlayer>
+              <div
                 key={track.id}
-                music={{
-                  title: track.title,
-                  artist: track.artist,
-                  album: track.album,
-                  cover: track.coverArt,
-                  preview: "/placeholder-audio.mp3", // Add actual preview URL
-                  artistId: track.artist
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-z0-9-]/g, ""),
-                }}
+                className="grid grid-cols-12 gap-4 p-4 hover:bg-muted/50 transition-all duration-200 group animate-in fade-in-0 slide-in-from-left-4"
+                style={{ animationDelay: `${400 + index * 50}ms`, animationDuration: "300ms" }}
               >
-                <div
-                  className="grid grid-cols-12 gap-4 p-4 hover:bg-muted/50 transition-all duration-200 group cursor-pointer animate-in fade-in-0 slide-in-from-left-4"
-                  style={{ animationDelay: `${400 + index * 50}ms`, animationDuration: "300ms" }}
-                >
-                  <div className="col-span-1 text-center text-muted-foreground group-hover:hidden transition-opacity duration-200">
-                    {index + 1}
-                  </div>
-                  <div className="col-span-1 text-center hidden group-hover:block">
-                    <Button size="sm" variant="ghost" className="h-8 w-8 p-0 transition-all duration-200">
-                      <Play className="h-4 w-4" />
-                    </Button>
-                  </div>
+                <div className="col-span-1 text-center text-muted-foreground transition-opacity duration-200">
+                  {index + 1}
+                </div>
+                {/* <div className="col-span-1 text-center hidden group-hover:block">
+                  <Button size="sm" variant="ghost" className="h-8 w-8 p-0 transition-all duration-200">
+                    <Play className="h-4 w-4" />
+                  </Button>
+                </div> */}
 
-                  <div className="col-span-6 flex items-center gap-3">
-                    <div className="transition-transform duration-200">
-                      <Image
-                        src={track.coverArt || "/placeholder.svg"}
-                        alt={track.album}
-                        width={40}
-                        height={40}
-                        className="rounded"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-medium transition-colors duration-200 group-hover:text-primary">
-                        {track.title}
-                      </p>
-                      <p
-                        className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors"
-                        onClick={(e) => handleArtistClick(track.artist, e)}
-                      >
-                        {track.artist}
-                      </p>
-                    </div>
+                <div className="col-span-6 flex items-center gap-3">
+                  <div className="transition-transform duration-200">
+                    <Image
+                      src={track.coverArt || "/placeholder.svg"}
+                      alt={track.album}
+                      width={40}
+                      height={40}
+                      className="rounded"
+                    />
                   </div>
-
-                  <div className="col-span-3 flex items-center">
+                  <div>
+                    <p className="font-medium transition-colors duration-200 group-hover:text-primary">
+                      {track.title}
+                    </p>
                     <p
-                      className="text-sm text-muted-foreground truncate hover:text-primary cursor-pointer transition-colors"
-                      onClick={(e) => handleAlbumClick(track.albumId, e)}
+                      className="text-sm text-muted-foreground hover:text-primary cursor-pointer transition-colors"
+                      onClick={(e) => handleArtistClick(track.artist, e)}
                     >
-                      {track.album}
+                      {track.artist}
                     </p>
                   </div>
-
-                  <div className="col-span-1 flex items-center justify-center">
-                    <p className="text-sm text-muted-foreground">{track.duration}</p>
-                  </div>
-
-                  <div className="col-span-1 flex items-center justify-center">
-                    {isEditMode ? (
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => handleRemoveTrack(track.id)}
-                        className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50 transition-all duration-200"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    ) : (
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
-                      >
-                        <Heart
-                          className={`h-4 w-4 transition-colors duration-200 ${track.isLiked ? "fill-red-500 text-red-500" : ""}`}
-                        />
-                      </Button>
-                    )}
-                  </div>
                 </div>
-              </MusicPlayer>
+
+                <div className="col-span-3 flex items-center">
+                  <p
+                    className="text-sm text-muted-foreground truncate hover:text-primary cursor-pointer transition-colors"
+                    onClick={(e) => handleAlbumClick(track.albumId, e)}
+                  >
+                    {track.album}
+                  </p>
+                </div>
+
+                <div className="col-span-1 flex items-center justify-center">
+                  <p className="text-sm text-muted-foreground">{track.duration}</p>
+                </div>
+
+                <div className="col-span-1 flex items-center justify-center">
+                  {isEditMode ? (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => handleRemoveTrack(track.id)}
+                      className="h-8 w-8 p-0 text-red-500 hover:text-red-700 hover:bg-red-50 transition-all duration-200"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  ) : (
+                    <></>
+                    // <Button
+                    //   size="sm"
+                    //   variant="ghost"
+                    //   className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-all duration-200"
+                    // >
+                    //   <Heart
+                    //     className={`h-4 w-4 transition-colors duration-200 ${track.isLiked ? "fill-red-500 text-red-500" : ""}`}
+                    //   />
+                    // </Button>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
         </CardContent>
       </Card>
 
       {/* List Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-500">
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-500">
         {[
           { icon: Music2, value: tracks.length, label: "Total Tracks" },
           { icon: Clock, value: formatTotalDuration(totalDuration), label: "Total Duration" },
@@ -429,7 +417,7 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
             </CardContent>
           </Card>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }

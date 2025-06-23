@@ -147,7 +147,7 @@ export function TopTracksTab({ artist }: TopTracksTabProps) {
 
           {/* Track Info */}
           <div className="flex-1 min-w-0">
-            <MusicPlayer
+            {/* <MusicPlayer
               music={{
                 title: track.title,
                 artist: artist.name,
@@ -156,10 +156,10 @@ export function TopTracksTab({ artist }: TopTracksTabProps) {
                 preview: track.preview,
               }}
             >
-              <h3 className="font-medium truncate cursor-pointer hover:text-primary transition-colors">
-                {track.title}
-              </h3>
-            </MusicPlayer>
+            </MusicPlayer> */}
+            <h3 className="font-medium truncate hover:text-primary transition-colors">
+              {track.title}
+            </h3>
             <p className="text-sm text-muted-foreground truncate">{track.album}</p>
             <div className="flex items-center gap-2 mt-1">
               <div className="flex items-center gap-1">
@@ -180,7 +180,7 @@ export function TopTracksTab({ artist }: TopTracksTabProps) {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-1">
-            <MusicPlayer
+            {/* <MusicPlayer
               music={{
                 title: track.title,
                 artist: artist.name,
@@ -195,7 +195,7 @@ export function TopTracksTab({ artist }: TopTracksTabProps) {
             </MusicPlayer>
             <Button variant="ghost" size="sm">
               <Heart className="h-4 w-4" />
-            </Button>
+            </Button> */}
             <Button variant="ghost" size="sm">
               <Plus className="h-4 w-4" />
             </Button>

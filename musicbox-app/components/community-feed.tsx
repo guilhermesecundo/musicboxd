@@ -94,7 +94,7 @@ export function CommunityFeed() {
 
                 <p className="text-sm mb-3">{post.content}</p>
 
-                <div className="flex items-center gap-4">
+                {/* <div className="flex items-center gap-4">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-pink-500">
                     <Heart className="h-4 w-4 mr-1" />
                     {post.likes}
@@ -107,12 +107,12 @@ export function CommunityFeed() {
                     <Share className="h-4 w-4 mr-1" />
                     {post.shares}
                   </Button>
-                </div>
+                </div> */}
               </div>
 
-              <Button variant="ghost" size="sm">
+              {/* <Button variant="ghost" size="sm">
                 <MoreHorizontal className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
           </div>
         ))}

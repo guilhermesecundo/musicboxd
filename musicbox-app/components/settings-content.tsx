@@ -10,19 +10,19 @@ import { AppearanceTab } from "@/components/settings-tabs/appearance-tab"
 export function SettingsContent() {
   return (
     <Tabs defaultValue="account" className="w-full">
-      <TabsList className="grid w-full grid-cols-5">
+      {/* <TabsList className="grid w-full grid-cols-5">
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="privacy">Privacy</TabsTrigger>
         <TabsTrigger value="notifications">Notifications</TabsTrigger>
         <TabsTrigger value="music">Music</TabsTrigger>
         <TabsTrigger value="appearance">Appearance</TabsTrigger>
-      </TabsList>
+      </TabsList> */}
 
       <TabsContent value="account" className="mt-6">
         <AccountTab />
       </TabsContent>
 
-      <TabsContent value="privacy" className="mt-6">
+      {/* <TabsContent value="privacy" className="mt-6">
         <PrivacyTab />
       </TabsContent>
 
@@ -36,7 +36,7 @@ export function SettingsContent() {
 
       <TabsContent value="appearance" className="mt-6">
         <AppearanceTab />
-      </TabsContent>
+      </TabsContent> */}
     </Tabs>
   )
 }

@@ -138,7 +138,7 @@ export function FriendsTab() {
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: activity.album.title,
                             artist: activity.album.artist,
@@ -148,10 +148,10 @@ export function FriendsTab() {
                             artistId: activity.album.artist.toLowerCase().replace(/\s+/g, "-"),
                           }}
                         >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {activity.album.title}
-                          </p>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
+                        <p className="font-medium text-sm hover:text-primary transition-colors">
+                          {activity.album.title}
+                        </p>
                         <Link
                           href={`/artist/${activity.album.artist.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
@@ -165,7 +165,7 @@ export function FriendsTab() {
                           </div>
                         )}
                       </div>
-                      <MusicPlayer
+                      {/* <MusicPlayer
                         music={{
                           title: activity.album.title,
                           artist: activity.album.artist,
@@ -178,7 +178,7 @@ export function FriendsTab() {
                         <Button variant="ghost" size="sm">
                           <Play className="h-4 w-4" />
                         </Button>
-                      </MusicPlayer>
+                      </MusicPlayer> */}
                     </div>
                   )}
 
@@ -190,7 +190,7 @@ export function FriendsTab() {
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: activity.track.title,
                             artist: activity.track.artist,
@@ -200,10 +200,10 @@ export function FriendsTab() {
                             artistId: activity.track.artist.toLowerCase().replace(/\s+/g, "-"),
                           }}
                         >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {activity.track.title}
-                          </p>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
+                        <p className="font-medium text-sm hover:text-primary transition-colors">
+                          {activity.track.title}
+                        </p>
                         <Link
                           href={`/artist/${activity.track.artist.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
@@ -211,7 +211,7 @@ export function FriendsTab() {
                           {activity.track.artist}
                         </Link>
                       </div>
-                      <MusicPlayer
+                      {/* <MusicPlayer
                         music={{
                           title: activity.track.title,
                           artist: activity.track.artist,
@@ -224,7 +224,7 @@ export function FriendsTab() {
                         <Button variant="ghost" size="sm">
                           <Play className="h-4 w-4" />
                         </Button>
-                      </MusicPlayer>
+                      </MusicPlayer> */}
                     </div>
                   )}
 
@@ -253,7 +253,7 @@ export function FriendsTab() {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-pink-500">
                       <Heart className="h-4 w-4 mr-1" />
                       {activity.likes}
@@ -266,12 +266,12 @@ export function FriendsTab() {
                       <Share className="h-4 w-4 mr-1" />
                       Share
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
 
-                <Button variant="ghost" size="sm">
+                {/* <Button variant="ghost" size="sm">
                   <MoreHorizontal className="h-4 w-4" />
-                </Button>
+                </Button> */}
               </div>
             </CardContent>
           </Card>

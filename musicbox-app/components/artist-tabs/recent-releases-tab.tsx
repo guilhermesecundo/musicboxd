@@ -97,7 +97,7 @@ export function RecentReleasesTab({ artist }: RecentReleasesTabProps) {
               {/* Track Info */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <MusicPlayer
+                  {/* <MusicPlayer
                     music={{
                       title: release.title,
                       artist: artist.name,
@@ -106,15 +106,15 @@ export function RecentReleasesTab({ artist }: RecentReleasesTabProps) {
                       preview: release.preview,
                     }}
                   >
-                    <h3 className="font-medium truncate cursor-pointer hover:text-primary transition-colors">
-                      {release.title}
-                    </h3>
-                  </MusicPlayer>
-                  {release.isNew && (
+                  </MusicPlayer> */}
+                  <h3 className="font-medium truncate hover:text-primary transition-colors">
+                    {release.title}
+                  </h3>
+                  {/* {release.isNew && (
                     <Badge variant="default" className="bg-green-500 hover:bg-green-600">
                       New
                     </Badge>
-                  )}
+                  )} */}
                 </div>
                 <p className="text-sm text-muted-foreground truncate">{release.album}</p>
                 <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
@@ -123,14 +123,14 @@ export function RecentReleasesTab({ artist }: RecentReleasesTabProps) {
                   <span>{release.type}</span>
                   <span>•</span>
                   <span>{release.duration}</span>
-                  <span>•</span>
-                  <span>{release.plays} plays</span>
+                  {/* <span>•</span>
+                  <span>{release.plays} plays</span> */}
                 </div>
               </div>
 
               {/* Action Buttons */}
               <div className="flex items-center gap-2">
-                <MusicPlayer
+                {/* <MusicPlayer
                   music={{
                     title: release.title,
                     artist: artist.name,
@@ -145,7 +145,7 @@ export function RecentReleasesTab({ artist }: RecentReleasesTabProps) {
                 </MusicPlayer>
                 <Button variant="ghost" size="sm">
                   <Heart className="h-4 w-4" />
-                </Button>
+                </Button> */}
                 <Button variant="ghost" size="sm">
                   <Plus className="h-4 w-4" />
                 </Button>

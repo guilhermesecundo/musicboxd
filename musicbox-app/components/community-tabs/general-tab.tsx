@@ -148,12 +148,12 @@ export function GeneralTab() {
                     >
                       @{post.user.username}
                     </Link>
-                    {post.trending && (
+                    {/* {post.trending && (
                       <Badge variant="default" className="text-xs bg-orange-500">
                         <TrendingUp className="h-3 w-3 mr-1" />
                         Trending
                       </Badge>
-                    )}
+                    )} */}
                     <span className="text-muted-foreground text-sm">•</span>
                     <span className="text-muted-foreground text-sm">{post.time}</span>
                   </div>
@@ -169,7 +169,7 @@ export function GeneralTab() {
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: post.track.title,
                             artist: post.track.artist,
@@ -179,10 +179,10 @@ export function GeneralTab() {
                             artistId: post.track.artist.toLowerCase().replace(/\s+/g, "-"),
                           }}
                         >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {post.track.title}
-                          </p>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
+                        <p className="font-medium text-sm hover:text-primary transition-colors">
+                          {post.track.title}
+                        </p>
                         <Link
                           href={`/artist/${post.track.artist.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
@@ -190,7 +190,7 @@ export function GeneralTab() {
                           {post.track.artist}
                         </Link>
                       </div>
-                      <MusicPlayer
+                      {/* <MusicPlayer
                         music={{
                           title: post.track.title,
                           artist: post.track.artist,
@@ -203,7 +203,7 @@ export function GeneralTab() {
                         <Button variant="ghost" size="sm">
                           <Play className="h-4 w-4" />
                         </Button>
-                      </MusicPlayer>
+                      </MusicPlayer> */}
                     </div>
                   )}
 
@@ -215,7 +215,7 @@ export function GeneralTab() {
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: post.album.title,
                             artist: post.album.artist,
@@ -225,10 +225,10 @@ export function GeneralTab() {
                             artistId: post.album.artist.toLowerCase().replace(/\s+/g, "-"),
                           }}
                         >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {post.album.title}
-                          </p>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
+                        <p className="font-medium text-sm hover:text-primary transition-colors">
+                          {post.album.title}
+                        </p>
                         <Link
                           href={`/artist/${post.album.artist.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
@@ -236,7 +236,7 @@ export function GeneralTab() {
                           {post.album.artist}
                         </Link>
                       </div>
-                      <MusicPlayer
+                      {/* <MusicPlayer
                         music={{
                           title: post.album.title,
                           artist: post.album.artist,
@@ -249,11 +249,11 @@ export function GeneralTab() {
                         <Button variant="ghost" size="sm">
                           <Play className="h-4 w-4" />
                         </Button>
-                      </MusicPlayer>
+                      </MusicPlayer> */}
                     </div>
                   )}
 
-                  {post.playlist && (
+                  {/* {post.playlist && (
                     <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
                       <img
                         src={post.playlist.cover || "/placeholder.svg"}
@@ -268,9 +268,9 @@ export function GeneralTab() {
                         <Play className="h-4 w-4" />
                       </Button>
                     </div>
-                  )}
+                  )} */}
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-pink-500">
                       <Heart className="h-4 w-4 mr-1" />
                       {post.likes}
@@ -283,12 +283,12 @@ export function GeneralTab() {
                       <Share className="h-4 w-4 mr-1" />
                       {post.shares}
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
 
-                <Button variant="ghost" size="sm">
+                {/* <Button variant="ghost" size="sm">
                   <MoreHorizontal className="h-4 w-4" />
-                </Button>
+                </Button> */}
               </div>
             </CardContent>
           </Card>

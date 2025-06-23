@@ -35,7 +35,7 @@ export function HomeHeader() {
               <Home className="h-4 w-4" />
               Home
             </Link>
-            <Link
+            {/* <Link
               href="/discover"
               className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
             >
@@ -48,7 +48,7 @@ export function HomeHeader() {
             >
               <TrendingUp className="h-4 w-4" />
               Trending
-            </Link>
+            </Link> */}
             <Link
               href="/community"
               className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
@@ -67,7 +67,7 @@ export function HomeHeader() {
             </div>
           </div>
 
-          <NotificationsDropdown />
+          {/* <NotificationsDropdown /> */}
 
           <ThemeToggle />
 
@@ -78,13 +78,13 @@ export function HomeHeader() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56" sideOffset={8}>
-              <DropdownMenuItem onClick={() => (window.location.href = "/settings")}>
-                <Settings className="mr-2 h-4 w-4" />
-                Settings
-              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => (window.location.href = "/profile/johndoe")}>
                 <User className="mr-2 h-4 w-4" />
                 My Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => (window.location.href = "/settings")}>
+                <Settings className="mr-2 h-4 w-4" />
+                Settings
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => (window.location.href = "/")}>Log out</DropdownMenuItem>

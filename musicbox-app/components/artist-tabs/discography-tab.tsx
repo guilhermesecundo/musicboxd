@@ -211,7 +211,7 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
           </h2>
           <p className="text-muted-foreground">All albums and releases</p>
         </div>
-        <Select defaultValue="all">
+        {/* <Select defaultValue="all">
           <SelectTrigger className="w-48">
             <SelectValue />
           </SelectTrigger>
@@ -221,7 +221,7 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
             <SelectItem value="rerecorded">Re-recorded</SelectItem>
             <SelectItem value="singles">Singles</SelectItem>
           </SelectContent>
-        </Select>
+        </Select> */}
       </div>
 
       {/* Albums List */}
@@ -267,17 +267,6 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                     </div>
                     <p className="text-muted-foreground mb-4">{album.description}</p>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <Button className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600">
-                      <Play className="h-4 w-4 mr-2" />
-                      Play Album
-                    </Button>
-                    <Button variant="outline">
-                      <Heart className="h-4 w-4 mr-2" />
-                      Save
-                    </Button>
-                  </div>
                 </div>
 
                 {/* Track List */}
@@ -292,7 +281,7 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                     >
                       <div className="w-6 text-center text-sm text-muted-foreground">{index + 1}</div>
                       <div className="flex-1 min-w-0">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: track.title,
                             artist: artist.name,
@@ -301,14 +290,14 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                             preview: track.preview,
                           }}
                         >
-                          <p className="font-medium truncate cursor-pointer hover:text-primary transition-colors">
-                            {track.title}
-                          </p>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
+                        <p className="font-medium truncate hover:text-primary transition-colors">
+                          {track.title}
+                        </p>
                       </div>
                       <div className="text-sm text-muted-foreground">{track.duration}</div>
                       <div className="flex items-center gap-1">
-                        <MusicPlayer
+                        {/* <MusicPlayer
                           music={{
                             title: track.title,
                             artist: artist.name,
@@ -320,7 +309,7 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                           <Button variant="ghost" size="sm">
                             <Play className="h-4 w-4" />
                           </Button>
-                        </MusicPlayer>
+                        </MusicPlayer> */}
                         <Button variant="ghost" size="sm">
                           <Plus className="h-4 w-4" />
                         </Button>

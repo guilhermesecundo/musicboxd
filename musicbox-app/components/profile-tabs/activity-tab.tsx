@@ -26,21 +26,21 @@ const activities = [
     time: "2 hours ago",
     type: "rating",
   },
-  {
-    id: 2,
-    action: "added to list",
-    target: "Summer Vibes 2024",
-    album: "After Hours by The Weeknd",
-    time: "4 hours ago",
-    type: "list",
-  },
-  {
-    id: 3,
-    action: "liked",
-    target: "Blinding Lights by The Weeknd",
-    time: "6 hours ago",
-    type: "like",
-  },
+  // {
+  //   id: 2,
+  //   action: "added to list",
+  //   target: "Summer Vibes 2024",
+  //   album: "After Hours by The Weeknd",
+  //   time: "4 hours ago",
+  //   type: "list",
+  // },
+  // {
+  //   id: 3,
+  //   action: "liked",
+  //   target: "Blinding Lights by The Weeknd",
+  //   time: "6 hours ago",
+  //   type: "like",
+  // },
   {
     id: 4,
     action: "favorited artist",
@@ -137,14 +137,14 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 {activity.review && <div className="text-sm bg-muted/50 p-3 rounded-lg">"{activity.review}"</div>}
               </div>
 
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <Button variant="ghost" size="sm">
                   <Heart className="h-4 w-4" />
                 </Button>
                 <Button variant="ghost" size="sm">
                   <MessageCircle className="h-4 w-4" />
                 </Button>
-              </div>
+              </div> */}
             </div>
           ))}
         </CardContent>

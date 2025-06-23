@@ -39,16 +39,16 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
     <Card className="overflow-hidden mb-6">
       {/* Background Image */}
       <div className="relative h-48 md:h-64 bg-gradient-to-r from-blue-500 to-pink-500">
-        <Image
+        {/* <Image
           src={user.backgroundPicture || "/placeholder.svg"}
           alt="Profile background"
           fill
           className="object-cover"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black/20" />
 
         {/* Edit Background Button (only for current user) */}
-        {user.isCurrentUser && (
+        {/* {user.isCurrentUser && (
           <Link href="/settings">
             <Button
               variant="secondary"
@@ -59,7 +59,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               Edit Cover
             </Button>
           </Link>
-        )}
+        )} */}
       </div>
 
       {/* Profile Content */}
@@ -74,13 +74,15 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
               className="object-cover"
             />
             {user.isCurrentUser && (
-              <Button
-                variant="secondary"
-                size="sm"
-                className="absolute bottom-2 right-2 w-8 h-8 p-0 rounded-full bg-black/50 hover:bg-black/70 text-white border-0"
-              >
-                <Camera className="h-3 w-3" />
-              </Button>
+              <Link href="/settings">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="absolute bottom-2 right-2 w-8 h-8 p-0 rounded-full bg-black/50 hover:bg-black/70 text-white border-0"
+                >
+                  <Camera className="h-3 w-3" />
+                </Button>
+              </Link>
             )}
           </div>
         </div>

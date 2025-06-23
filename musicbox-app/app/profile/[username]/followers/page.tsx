@@ -182,17 +182,6 @@ export default function FollowersPage({ params }: FollowersPageProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            {listType === "following" && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => handleUnfollow(user.id)}
-                className="text-red-600 hover:text-red-700 hover:bg-red-50"
-              >
-                Unfollow
-              </Button>
-            )}
-
             {!user.isCurrentUser && (
               <Button
                 variant={user.isFollowing ? "outline" : "default"}
@@ -243,7 +232,7 @@ export default function FollowersPage({ params }: FollowersPageProps) {
           </div>
 
           {/* Search */}
-          <div className="relative mb-6">
+          {/* <div className="relative mb-6">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search users..."
@@ -251,7 +240,7 @@ export default function FollowersPage({ params }: FollowersPageProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
             />
-          </div>
+          </div> */}
 
           {/* Tabs */}
           <Tabs defaultValue={defaultTab} className="w-full">
