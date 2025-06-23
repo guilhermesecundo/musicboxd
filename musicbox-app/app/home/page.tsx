@@ -13,7 +13,6 @@ export default function HomePage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             <ActivityFeed />
-            <CommunityFeed />
           </div>
 
           {/* Sidebar */}

@@ -3,6 +3,8 @@
 import { useState } from "react"
 import Image from "next/image"
 import { Camera, MapPin, Calendar, Settings, UserPlus, UserCheck } from "lucide-react"
+import {useUser} from "@/context/UserContext"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import Link from "next/link"
@@ -11,15 +13,15 @@ import { usePathname } from "next/navigation"
 interface User {
   id: number
   username: string
-  displayName: string
-  bio: string
+//  displayName: string
+//  bio: string
   profilePicture: string
-  backgroundPicture: string
+//  backgroundPicture: string
   followers: number
   following: number
   isCurrentUser: boolean
   joinedDate: string
-  location: string
+//  location: string
 }
 
 interface ProfileHeaderProps {
@@ -28,6 +30,7 @@ interface ProfileHeaderProps {
 
 export function ProfileHeader({ user }: ProfileHeaderProps) {
   const pathname = usePathname();
+  const username = useUser();
 
   const [isFollowing, setIsFollowing] = useState(false)
 
@@ -67,12 +70,11 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
         {/* Profile Picture */}
         <div className="relative -mt-16 mb-4">
           <div className="relative w-32 h-32 rounded-full border-4 border-background bg-background overflow-hidden">
-            <Image
-              src={user.profilePicture || "/placeholder.svg"}
-              alt={user.displayName}
-              fill
-              className="object-cover"
-            />
+            <Avatar className="h-32 w-32">
+              <AvatarFallback className="text-6xl font-bold flex items-center justify-center h-full w-full">
+                {user.username.charAt(0).toLowerCase()}
+              </AvatarFallback>
+            </Avatar>
             {user.isCurrentUser && (
               <Link href="/settings">
                 <Button
@@ -91,15 +93,15 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           <div className="flex-1">
             {/* Name and Username */}
             <div className="mb-2">
-              <h1 className="text-2xl font-bold">{user.displayName}</h1>
-              <p className="text-muted-foreground">@{user.username}</p>
+              <h1 className="text-2xl font-bold">{user.username}</h1>
+              {/* <p className="text-muted-foreground">@{user.username}</p> */}
             </div>
 
             {/* Bio */}
-            <p className="text-sm mb-3 max-w-2xl">{user.bio}</p>
-
+            {/* <p className="text-sm mb-3 max-w-2xl">{user.bio}</p>
+ */}
             {/* Meta Information */}
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+            {/* <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
               {user.location && (
                 <div className="flex items-center gap-1">
                   <MapPin className="h-4 w-4" />
@@ -110,7 +112,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
                 <Calendar className="h-4 w-4" />
                 Joined {user.joinedDate}
               </div>
-            </div>
+            </div> */}
 
             {/* Followers/Following */}
             <div className="flex items-center gap-6 text-sm">

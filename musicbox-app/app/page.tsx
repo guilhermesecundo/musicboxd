@@ -76,7 +76,7 @@ export default function LandingPage() {
                   </AnimatedButton> */}
                 </div>
               </AnimateInView>
-              <AnimateInView className="flex items-center justify-center" direction="left" delay={300}>
+              {/* <AnimateInView className="flex items-center justify-center" direction="left" delay={300}>
                 <div className="relative h-[350px] w-[350px] sm:h-[400px] sm:w-[400px] lg:h-[450px] lg:w-[450px] animate-float">
                   <Image
                     src="/placeholder.svg?height=450&width=450"
@@ -85,7 +85,7 @@ export default function LandingPage() {
                     className="object-contain rounded-lg shadow-2xl border border-border transition-all duration-500 hover:shadow-blue-200/20 dark:hover:shadow-blue-900/20"
                   />
                 </div>
-              </AnimateInView>
+              </AnimateInView> */}
             </div>
           </div>
         </section>

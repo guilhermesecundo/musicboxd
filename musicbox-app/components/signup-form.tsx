@@ -1,8 +1,6 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Eye, EyeOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -14,17 +12,55 @@ export function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.")
+      return
+    }
+
+    if (!username || !email || !password) {
+      setError("Please fill all required fields.")
+      return
+    }
+
     setIsLoading(true)
 
-    // Simulate signup process
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const nome = username // aqui username será enviado como nome para o banco
 
-    // Redirect to homepage
-    router.push("/home")
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nome, email, senha: password }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.message || "Failed to create account.")
+        setIsLoading(false)
+        return
+      }
+
+      router.push("/home")
+    } catch (err) {
+      setError("Unexpected error occurred.")
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -36,28 +72,38 @@ export function SignUpForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="firstName">First name</Label>
-              <Input id="firstName" placeholder="John" required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="lastName">Last name</Label>
-              <Input id="lastName" placeholder="Doe" required />
-            </div>
-          </div>
           <div className="space-y-2">
             <Label htmlFor="username">Username</Label>
-            <Input id="username" placeholder="johndoe" required />
+            <Input
+              id="username"
+              placeholder="Your username"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="john@example.com" required />
+            <Input
+              id="email"
+              type="email"
+              placeholder="john@example.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <div className="relative">
-              <Input id="password" type={showPassword ? "text" : "password"} placeholder="Create a password" required />
+              <Input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Create a password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <Button
                 type="button"
                 variant="ghost"
@@ -77,6 +123,8 @@ export function SignUpForm() {
                 type={showConfirmPassword ? "text" : "password"}
                 placeholder="Confirm your password"
                 required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <Button
                 type="button"
@@ -89,6 +137,9 @@ export function SignUpForm() {
               </Button>
             </div>
           </div>
+
+          {error && <p className="text-red-600">{error}</p>}
+
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Creating account..." : "Create account"}
           </Button>

@@ -1,23 +1,23 @@
 -- Tabela de usuários
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Tabela de artistas
 CREATE TABLE artists (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    pais VARCHAR(100)
+    name VARCHAR(255) NOT NULL,
+    country VARCHAR(100)
 );
 
 -- Tabela de álbuns
 CREATE TABLE albums (
     id SERIAL PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     release_date DATE NOT NULL,
     artist_id INT NOT NULL,
     FOREIGN KEY (artist_id) REFERENCES artists(id)
@@ -26,7 +26,7 @@ CREATE TABLE albums (
 -- Tabela de músicas
 CREATE TABLE musics (
     id SERIAL PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     release_date DATE NOT NULL,
     duration INT NOT NULL,
     artist_id INT NOT NULL,
@@ -38,8 +38,8 @@ CREATE TABLE musics (
 -- Tabela de playlists
 CREATE TABLE playlists (
     id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
@@ -48,8 +48,8 @@ CREATE TABLE playlists (
 -- Tabela de avaliações
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    nota INT CHECK (nota BETWEEN 1 AND 5),
-    comentario TEXT,
+    rate INT CHECK (rate BETWEEN 1 AND 5),
+    comment TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT NOT NULL,
     music_id INT NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE user_favorite_artists (
 CREATE TABLE playlist_musics (
     playlist_id INT NOT NULL,
     music_id INT NOT NULL,
-    ordem INT NOT NULL,
+    order INT NOT NULL,
     PRIMARY KEY (playlist_id, music_id),
     FOREIGN KEY (playlist_id) REFERENCES playlists(id),
     FOREIGN KEY (music_id) REFERENCES musics(id)

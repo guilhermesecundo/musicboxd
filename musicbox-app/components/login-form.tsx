@@ -1,9 +1,8 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState } from "react"
 import { useRouter } from "next/navigation"
+import { useUser } from "@/context/UserContext"  // <== importe o hook
 import { Eye, EyeOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,17 +12,46 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const router = useRouter()
+
+  const { setUsername } = useUser() 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
     setIsLoading(true)
 
-    // Simulate login process
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, senha: password }),
+      })
 
-    // Redirect to homepage
-    router.push("/home")
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.message || "Login failed")
+        setIsLoading(false)
+        return
+      }
+
+      // Sucesso — salve o nome de usuário no contexto (exemplo: data.username)
+      setUsername(data.nome)  // <- ajuste conforme o campo que seu backend retorna
+
+      // redirecionar
+      router.push("/home")
+    } catch (err) {
+      console.error(err)
+      setError("Unexpected error occurred")
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -37,7 +65,14 @@ export function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="Enter your email" required />
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
@@ -47,6 +82,8 @@ export function LoginForm() {
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <Button
                 type="button"
@@ -59,6 +96,9 @@ export function LoginForm() {
               </Button>
             </div>
           </div>
+
+          {error && <p className="text-red-600 text-sm">{error}</p>}
+
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? "Signing in..." : "Sign in"}
           </Button>
