@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SequelizeMeta {
+  name String @id @db.VarChar(255)
+}
+
+model albums {
+  id                   Int                    @id @default(autoincrement())
+  titulo               String                 @db.VarChar(255)
+  release_date         DateTime               @db.Date
+  artist_id            Int
+  artists              artists                @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  musics               musics[]
+  user_favorite_albums user_favorite_albums[]
+}
+
+model artists {
+  id                    Int                     @id @default(autoincrement())
+  nome                  String                  @db.VarChar(255)
+  pais                  String?                 @db.VarChar(100)
+  albums                albums[]
+  musics                musics[]
+  user_favorite_artists user_favorite_artists[]
+}
+
+model follows {
+  following_user_id                      Int
+  followed_user_id                       Int
+  created_at                             DateTime? @default(now()) @db.Timestamp(6)
+  users_follows_followed_user_idTousers  users     @relation("follows_followed_user_idTousers", fields: [followed_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users_follows_following_user_idTousers users     @relation("follows_following_user_idTousers", fields: [following_user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([following_user_id, followed_user_id])
+}
+
+model musics {
+  id                   Int                    @id @default(autoincrement())
+  titulo               String                 @db.VarChar(255)
+  release_date         DateTime               @db.Date
+  duration             Int
+  artist_id            Int
+  album_id             Int
+  albums               albums                 @relation(fields: [album_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  artists              artists                @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  playlist_musics      playlist_musics[]
+  reviews              reviews[]
+  user_favorite_musics user_favorite_musics[]
+}
+
+model playlist_musics {
+  playlist_id Int
+  music_id    Int
+  ordem       Int
+  musics      musics    @relation(fields: [music_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  playlists   playlists @relation(fields: [playlist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([playlist_id, music_id])
+}
+
+model playlists {
+  id              Int               @id @default(autoincrement())
+  nome            String            @db.VarChar(255)
+  descricao       String?
+  created_at      DateTime?         @default(now()) @db.Timestamp(6)
+  user_id         Int
+  playlist_musics playlist_musics[]
+  users           users             @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model reviews {
+  id         Int       @id @default(autoincrement())
+  nota       Int?
+  comentario String?
+  created_at DateTime? @default(now()) @db.Timestamp(6)
+  user_id    Int
+  music_id   Int
+  musics     musics    @relation(fields: [music_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users      users     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model user_favorite_albums {
+  user_id  Int
+  album_id Int
+  albums   albums @relation(fields: [album_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users    users  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, album_id])
+}
+
+model user_favorite_artists {
+  user_id   Int
+  artist_id Int
+  artists   artists @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users     users   @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, artist_id])
+}
+
+model user_favorite_musics {
+  user_id  Int
+  music_id Int
+  musics   musics @relation(fields: [music_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  users    users  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([user_id, music_id])
+}
+
+model users {
+  id                                       Int                     @id @default(autoincrement())
+  nome                                     String                  @db.VarChar(255)
+  email                                    String                  @unique @db.VarChar(255)
+  senha                                    String                  @db.VarChar(255)
+  created_at                               DateTime?               @default(now()) @db.Timestamp(6)
+  follows_follows_followed_user_idTousers  follows[]               @relation("follows_followed_user_idTousers")
+  follows_follows_following_user_idTousers follows[]               @relation("follows_following_user_idTousers")
+  playlists                                playlists[]
+  reviews                                  reviews[]
+  user_favorite_albums                     user_favorite_albums[]
+  user_favorite_artists                    user_favorite_artists[]
+  user_favorite_musics                     user_favorite_musics[]
+}
