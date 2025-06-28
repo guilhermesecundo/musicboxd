@@ -48,10 +48,10 @@ export function GeneralTab() {
                 <Link href={`/profile/${post.user.username}`}>
                   <Avatar className="h-12 w-12 cursor-pointer hover:ring-2 hover:ring-primary transition-all">
                     {post.user.avatar ? (
-                      <AvatarImage src={post.user.avatar} alt={post.user.nome || post.user.name} />
+                      <AvatarImage src={post.user.avatar} alt={post.user.name || post.user.name} />
                     ) : (
                       <AvatarFallback>
-                        {(post.user.nome || post.user.name)
+                        {(post.user.name || post.user.name)
                           .split(" ")
                           .map((n: string) => n[0])
                           .join("")}
@@ -66,7 +66,7 @@ export function GeneralTab() {
                       href={`/profile/${post.user.name}`}
                       className="font-medium hover:text-primary transition-colors cursor-pointer"
                     >
-                      {post.user.nome || post.user.name}
+                      {post.user.name || post.user.name}
                     </Link>
                     
                     <span className="text-muted-foreground text-sm">•</span>
@@ -85,20 +85,20 @@ export function GeneralTab() {
                     <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
                       <img
                         src={post.album.cover || "/placeholder.svg"}
-                        alt={post.album.titulo}
+                        alt={post.album.title}
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
                         <p className="font-medium text-sm hover:text-primary transition-colors">
-                          {post.album.titulo}
+                          {post.album.title}
                         </p>
                         <Link
-                          href={`/artist/${post.album.artists?.nome
+                          href={`/artist/${post.album.artists?.name
                             ?.toLowerCase()
                             .replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
                         >
-                          {post.album.artists?.nome}
+                          {post.album.artists?.name}
                         </Link>
                       </div>
                     </div>
@@ -108,7 +108,7 @@ export function GeneralTab() {
                     <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
                       <div className="flex-1">
                         <p className="font-medium text-sm hover:text-primary transition-colors">
-                          {post.artist.nome}
+                          {post.artist.name}
                         </p>
                       </div>
                     </div>

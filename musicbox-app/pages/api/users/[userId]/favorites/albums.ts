@@ -28,8 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const album = fav.albums;
       return {
         id: album.id,
-        title: album.titulo,
-        artist: album.artists.nome,
+        title: album.title,
+        artist: album.artists.name,
         year: album.release_date.getFullYear(),
         tracks: album.musics.length,
         rating: 5, // ajuste conforme dados reais

@@ -67,7 +67,7 @@ export function FollowedTab() {
       <div className="space-y-4">
         {activities.map((activity) => {
           const user = activity.user || {}
-          const nome = user.nome || "User"
+          const name = user.name || "User"
           const username = user.username || "unknown"
           const avatar = user.avatar || null
           const createdAt = activity.createdAt ? new Date(activity.createdAt).toLocaleString() : "some time ago"
@@ -79,10 +79,10 @@ export function FollowedTab() {
                 <Link href={`/profile/${username}`}>
                   <Avatar className="h-12 w-12 cursor-pointer hover:ring-2 hover:ring-primary transition-all">
                     {avatar ? (
-                      <AvatarImage src={avatar} alt={nome} />
+                      <AvatarImage src={avatar} alt={name} />
                     ) : (
                       <AvatarFallback>
-                        {nome
+                        {name
                           .split(" ")
                           .map((n: string) => n[0])
                           .join("")}
@@ -98,7 +98,7 @@ export function FollowedTab() {
                       href={`/profile/${username}`}
                       className="font-medium hover:text-primary transition-colors cursor-pointer"
                     >
-                      {nome}
+                      {name}
                     </Link>
                     <span className="text-muted-foreground text-xs">@{username}</span>
                     <span className="text-muted-foreground text-sm">•</span>

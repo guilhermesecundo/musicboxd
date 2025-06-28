@@ -26,10 +26,10 @@ export default async function AlbumPage({ params }: AlbumPageProps) {
 
   const albumData = {
     id: album.id,
-    titulo: album.titulo,
+    title: album.title,
     artista: {
       id: album.artists.id,
-      nome: album.artists.nome,
+      name: album.artists.name,
     },
     ano: album.release_date.toISOString(),
     capa: "/placeholder.svg",

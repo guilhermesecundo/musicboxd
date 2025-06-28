@@ -29,9 +29,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const music = fav.musics;
       return {
         id: music.id,
-        title: music.titulo,
-        artist: music.artists.nome,
-        album: music.albums.titulo,
+        title: music.title,
+        artist: music.artists.name,
+        album: music.albums.title,
         year: music.release_date.getFullYear(),
         duration: formatDuration(music.duration), // implemente a função se quiser formatar segundos para mm:ss
         rating: 5, // ajuste conforme dados reais

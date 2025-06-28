@@ -10,13 +10,13 @@ import { AlbumOptionsMenu } from "@/components/album-options-menu"
 
 interface Artist {
   id: number
-  nome: string
+  name: string
 }
 
 interface Review {
   id: number
-  nota?: number | null
-  comentario?: string | null
+  rate?: number | null
+  comment?: string | null
   created_at?: string | null
   user_id: number
   music_id: number
@@ -24,7 +24,7 @@ interface Review {
 
 interface Music {
   id: number
-  titulo: string
+  title: string
   release_date: string
   duration: number
   artist_id: number
@@ -35,7 +35,7 @@ interface Music {
 
 interface Album {
   id: number
-  titulo: string
+  title: string
   release_date: string
   artists: Artist
   musics: Music[]
@@ -87,7 +87,7 @@ export function AlbumHeader({ albumId }: AlbumHeaderProps) {
         <div className="w-full max-w-xs">
           <Image
             src="/placeholder.svg" // você pode substituir por album.capa se existir
-            alt={album.titulo}
+            alt={album.title}
             width={400}
             height={400}
             className="rounded-lg object-cover"
@@ -105,7 +105,7 @@ export function AlbumHeader({ albumId }: AlbumHeaderProps) {
             </div>
 
             <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {album.titulo}
+              {album.title}
             </h1>
 
             <div className="flex items-center gap-4 text-lg mb-4">
@@ -113,7 +113,7 @@ export function AlbumHeader({ albumId }: AlbumHeaderProps) {
                 href={`/artist/${album.artists.id}`}
                 className="font-semibold hover:text-primary transition-colors"
               >
-                {album.artists.nome}
+                {album.artists.name}
               </Link>
               <span>•</span>
               <div className="flex items-center gap-1">

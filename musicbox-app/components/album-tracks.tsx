@@ -4,12 +4,12 @@ import React from "react"
 
 interface Track {
   id: number
-  titulo: string
+  title: string
   duration: number
 }
 
 interface Album {
-  titulo: string
+  title: string
   tracks?: Track[]
 }
 
@@ -22,7 +22,7 @@ export function AlbumTracks({ album }: AlbumTracksProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-4">{album.titulo} - Tracks</h2>
+      <h2 className="text-2xl font-semibold mb-4">{album.title} - Tracks</h2>
       <div className="space-y-2">
         {album.tracks.length === 0 && (
           <p>No tracks available for this album.</p>
@@ -32,7 +32,7 @@ export function AlbumTracks({ album }: AlbumTracksProps) {
             key={track.id}
             className="flex justify-between items-center p-3 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer"
           >
-            <span>{track.titulo}</span>
+            <span>{track.title}</span>
             <span>{formatDuration(track.duration)}</span>
           </div>
         ))}

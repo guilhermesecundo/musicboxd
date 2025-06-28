@@ -26,9 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const tracks = playlistTracks.map(({ musics }) => ({
         id: musics.id,
-        title: musics.titulo,
-        artist: musics.artists.nome,
-        album: musics.albums.titulo,
+        title: musics.title,
+        artist: musics.artists.name,
+        album: musics.albums.title,
         albumId: musics.album_id,
         duration: `${Math.floor(musics.duration / 60)}:${(musics.duration % 60)
           .toString()

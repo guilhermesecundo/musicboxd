@@ -38,14 +38,14 @@ export function SignUpForm() {
     setIsLoading(true)
 
     try {
-      const nome = username // aqui username será enviado como nome para o banco
+      const name = username // aqui username será enviado como nome para o banco
 
       const res = await fetch("/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nome, email, senha: password }),
+        body: JSON.stringify({ name, email, password: password }),
       })
 
       const data = await res.json()

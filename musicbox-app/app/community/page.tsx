@@ -1,4 +1,5 @@
 import { HomeHeader } from "@/components/home-header"
+import { Suspense } from "react"
 import { CommunityTabs } from "@/components/community-tabs"
 
 export default function CommunityPage() {
@@ -13,9 +14,14 @@ export default function CommunityPage() {
               Discover what your friends and the music community are listening to and sharing
             </p>
           </div>
-          <CommunityTabs />
+
+          {/* Wrap Client Component in Suspense */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <CommunityTabs />
+          </Suspense>
         </div>
       </main>
     </div>
   )
 }
+

@@ -1,0 +1,35 @@
+services:
+  app:  # Renamed from "app" for clarity
+    build: ./musicbox-app
+    container_name: musicboxd-app
+    ports:
+      - "3000:3000"  # Dev access (optional)
+    environment:
+      - NODE_ENV=production  # Or 'production' if using `next start`
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/musicbox
+      # Remove REACT_APP_API_URL (Next.js doesn't connect directly to PostgreSQL)
+    volumes:
+      - ./musicbox-app/:/usr/src/app
+      - /usr/src/app/node_modules  # Avoid overwriting node_modules
+    networks:
+      - musicboxd-net
+
+  db:
+    image: postgres:14
+    container_name: musicboxd-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=musicbox
+    volumes:
+      - musicboxd-postgres-data:/var/lib/postgresql/data
+    # Remove ports if external access isn't needed
+    networks:
+      - musicboxd-net
+
+volumes:
+  musicboxd-postgres-data:
+
+networks:
+  musicboxd-net:
+    driver: bridge

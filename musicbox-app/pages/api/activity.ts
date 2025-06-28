@@ -76,19 +76,19 @@ async function getActivitiesByUserIds(userIds: number[]) {
       id: review.id,
       user: {
         id: review.users.id,
-        name: review.users.nome,
+        name: review.users.name,
         username: review.users.email.split("@")[0], // Não tem username? usa email prefix
-        avatar: null, // Não tem avatar no schema, deixar null ou placeholder
+        avatar: null, // FIXME: Não tem avatar no schema, deixar null ou placeholder
       },
       action: "reviewed",
-      target: review.musics.albums.titulo,
-      review: review.comentario,
+      target: review.musics.albums.title,
+      review: review.comment,
       createdAt: review.created_at,
       type: "review",
       music: {
-        title: review.musics.titulo,
-        album: review.musics.albums.titulo,
-        artist: review.musics.artists.nome,
+        title: review.musics.title,
+        album: review.musics.albums.title,
+        artist: review.musics.artists.name,
         cover: null,
       },
     })
@@ -99,16 +99,16 @@ async function getActivitiesByUserIds(userIds: number[]) {
       id: fav.artist_id,
       user: {
         id: fav.users.id,
-        name: fav.users.nome,
+        name: fav.users.name,
         username: fav.users.email.split("@")[0],
         avatar: null,
       },
       action: "favorited artist",
-      target: fav.artists.nome,
+      target: fav.artists.name,
       createdAt: null,
       type: "favorite_artist",
       artist: {
-        name: fav.artists.nome,
+        name: fav.artists.name,
         cover: null,
       },
     })
@@ -119,16 +119,16 @@ async function getActivitiesByUserIds(userIds: number[]) {
       id: playlist.id,
       user: {
         id: playlist.users.id,
-        name: playlist.users.nome,
+        name: playlist.users.name,
         username: playlist.users.email.split("@")[0],
         avatar: null,
       },
       action: "added playlist",
-      target: playlist.nome,
+      target: playlist.name,
       createdAt: playlist.created_at,
       type: "playlist",
       playlist: {
-        title: playlist.nome,
+        title: playlist.name,
         trackCount: playlist.playlist_musics.length,
         cover: null,
       },
@@ -140,18 +140,18 @@ async function getActivitiesByUserIds(userIds: number[]) {
       id: favMusic.music_id,
       user: {
         id: favMusic.users.id,
-        name: favMusic.users.nome,
+        name: favMusic.users.name,
         username: favMusic.users.email.split("@")[0],
         avatar: null,
       },
       action: "liked music",
-      target: `${favMusic.musics.titulo} by ${favMusic.musics.artists.nome}`,
+      target: `${favMusic.musics.title} by ${favMusic.musics.artists.name}`,
       createdAt: null,
       type: "favorite_music",
       music: {
-        title: favMusic.musics.titulo,
-        artist: favMusic.musics.artists.nome,
-        album: favMusic.musics.albums.titulo,
+        title: favMusic.musics.title,
+        artist: favMusic.musics.artists.name,
+        album: favMusic.musics.albums.title,
         cover: null,
       },
     })

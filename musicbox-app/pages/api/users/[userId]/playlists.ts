@@ -28,8 +28,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const result = playlists.map((playlist) => ({
         id: playlist.id,
-        title: playlist.nome,
-        description: playlist.descricao,
+        title: playlist.name,
+        description: playlist.description,
         trackCount: playlist.playlist_musics.length,
         isPublic: playlist.publica ?? true, // ajuste conforme schema
         coverImages: [
@@ -57,8 +57,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       const newList = await prisma.playlists.create({
         data: {
-          nome: title,
-          descricao: description,
+          name: title,
+          description: description,
           publica: isPublic,
           user_id: parsedUserId,
         },

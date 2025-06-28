@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const artist = fav.artists;
       return {
         id: artist.id,
-        name: artist.nome,
+        name: artist.name,
         image: "/placeholder.svg", // ou artist.image se tiver
         albums: artist.albums.length,
       };

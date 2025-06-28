@@ -31,7 +31,7 @@ export function LoginForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, senha: password }),
+        body: JSON.stringify({ email, password: password }),
       })
 
       const data = await res.json()
@@ -42,8 +42,8 @@ export function LoginForm() {
         return
       }
 
-      // Sucesso — salve o nome de usuário no contexto (exemplo: data.username)
-      setUsername(data.nome)  // <- ajuste conforme o campo que seu backend retorna
+      // Sucesso — salve o name de usuário no contexto (exemplo: data.username)
+      setUsername(data.name)  // <- ajuste conforme o campo que seu backend retorna
 
       // redirecionar
       router.push("/home")

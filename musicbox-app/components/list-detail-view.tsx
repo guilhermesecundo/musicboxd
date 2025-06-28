@@ -19,7 +19,7 @@ import Image from "next/image"
 interface User {
   id: number
   username: string
-  nome: string
+  name: string
   profilePicture: string
   isCurrentUser: boolean
 }
@@ -109,9 +109,9 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
           <div className="flex items-center gap-2">
             {/* <Avatar className="h-6 w-6">
               <AvatarImage src={user.profilePicture || "/placeholder.svg"} />
-              <AvatarFallback>{user.nome}</AvatarFallback>
+              <AvatarFallback>{user.name}</AvatarFallback>
             </Avatar> */}
-            <span className="font-medium">{user.nome}</span>
+            <span className="font-medium">{user.name}</span>
           </div>
 
           <div className="flex items-center gap-3">

@@ -68,8 +68,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       activityList.push({
         id: review.id,
         action: "reviewed",
-        target: review.musics.albums.titulo,
-        review: review.comentario,
+        target: review.musics.albums.title,
+        review: review.comment,
         time: timeAgo(review.created_at),
         type: "review",
       })
@@ -80,7 +80,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       activityList.push({
         id: fav.artist_id,
         action: "favorited artist",
-        target: fav.artists.nome,
+        target: fav.artists.name,
         time: "some time ago", // ou calcule tempo real com created_at se disponível
         type: "favorite",
       })
@@ -91,7 +91,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       activityList.push({
         id: playlist.id,
         action: "added to list",
-        target: playlist.nome,
+        target: playlist.name,
         album: "", // opcional, ou deixe vazio
         time: timeAgo(playlist.created_at),
         type: "list",
@@ -103,7 +103,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       activityList.push({
         id: favMusic.music_id,
         action: "liked",
-        target: `${favMusic.musics.titulo} by ${favMusic.musics.artists.nome}`,
+        target: `${favMusic.musics.title} by ${favMusic.musics.artists.name}`,
         time: "some time ago",
         type: "like",
       })

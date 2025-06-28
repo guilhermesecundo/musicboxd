@@ -71,8 +71,8 @@ export function ListsTab({ user, onListClick }: ListsTabProps) {
       const newList = await res.json()
       setMusicLists((prev) => [...prev, {
         id: newList.id,
-        title: newList.nome,
-        description: newList.descricao,
+        title: newList.name,
+        description: newList.description,
         trackCount: 0,
         isPublic: listData.isPublic,
         coverImages: ["/placeholder.svg", "/placeholder.svg", "/placeholder.svg", "/placeholder.svg"],

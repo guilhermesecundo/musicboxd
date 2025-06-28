@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const user = await prisma.users.findFirst({
-      where: { nome: String(username) },
+      where: { name: String(username) },
       include: {
         follows_follows_following_user_idTousers: true, // seguidores
         follows_follows_followed_user_idTousers: true,  // seguindo
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const profile = {
       id: user.id,
-      username: user.nome,
+      username: user.name,
       profilePicture: "/placeholder.svg",
       followers: user.follows_follows_following_user_idTousers.length,
       following: user.follows_follows_followed_user_idTousers.length,
