@@ -98,7 +98,7 @@ CREATE TABLE user_favorite_artists (
 CREATE TABLE playlist_musics (
     playlist_id INT NOT NULL,
     music_id INT NOT NULL,
-    order INT NOT NULL,
+    track_order INT NOT NULL,
     PRIMARY KEY (playlist_id, music_id),
     FOREIGN KEY (playlist_id) REFERENCES playlists(id),
     FOREIGN KEY (music_id) REFERENCES musics(id)
