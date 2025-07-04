@@ -48,7 +48,7 @@ export function HomeHeader() {
               <Home className="h-4 w-4" />
               Home
             </Link>
-            {/* <Link
+            <Link
               href="/discover"
               className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"
             >
@@ -61,7 +61,7 @@ export function HomeHeader() {
             >
               <TrendingUp className="h-4 w-4" />
               Trending
-            </Link> */}
+            </Link>
             <Link
               href="/community"
               className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors"

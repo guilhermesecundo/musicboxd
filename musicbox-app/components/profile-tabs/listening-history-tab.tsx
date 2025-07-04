@@ -8,7 +8,6 @@ import Image from "next/image"
 interface User {
   id: number
   username: string
-  displayName: string
   isCurrentUser: boolean
 }
 
@@ -136,30 +135,30 @@ export function ListeningHistoryTab({ user }: ListeningHistoryTabProps) {
           <div className="space-y-3">
             {listeningHistory.map((track) => (
               <MusicPlayer music={track}>
-                      <div
-                key={track.id}
-                className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-              >
-                <div className="relative w-12 h-12 rounded-lg overflow-hidden">
-                  <Image src={track.cover || "/placeholder.svg"} alt={track.title} fill className="object-cover" />
-                </div>
+                <div
+                  key={track.id}
+                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                >
+                  <div className="relative w-12 h-12 rounded-lg overflow-hidden">
+                    <Image src={track.cover || "/placeholder.svg"} alt={track.title} fill className="object-cover" />
+                  </div>
 
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium truncate">{track.title}</h3>
-                  <p className="text-sm text-muted-foreground truncate">{track.artist}</p>
-                  <p className="text-xs text-muted-foreground">{track.album}</p>
-                </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-medium truncate">{track.title}</h3>
+                    <p className="text-sm text-muted-foreground truncate">{track.artist}</p>
+                    <p className="text-xs text-muted-foreground">{track.album}</p>
+                  </div>
 
-                <div className="text-right">
-                  <p className="text-sm text-muted-foreground">{track.listenedAt}</p>
-                  <p className="text-xs text-muted-foreground">{track.duration}</p>
-                </div>
+                  <div className="text-right">
+                    <p className="text-sm text-muted-foreground">{track.listenedAt}</p>
+                    <p className="text-xs text-muted-foreground">{track.duration}</p>
+                  </div>
 
-                <Button variant="ghost" size="sm">
-                  <Play className="h-4 w-4" />
-                </Button>
-              </div>
-            </MusicPlayer>
+                  <Button variant="ghost" size="sm">
+                    <Play className="h-4 w-4" />
+                  </Button>
+                </div>
+              </MusicPlayer>
             ))}
           </div>
         </CardContent>

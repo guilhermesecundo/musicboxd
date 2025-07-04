@@ -26,10 +26,10 @@ export function ProfileTabs({ user, onListClick, activeTab = "activity", onTabCh
   return (
     <div className="mt-6 animate-in fade-in-0 slide-in-from-left-4 duration-300">
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="activity">Activity</TabsTrigger>
           <TabsTrigger value="favorites">Favorites</TabsTrigger>
-          {/* <TabsTrigger value="history">Listening History</TabsTrigger> */}
+          <TabsTrigger value="history">Listening History</TabsTrigger>
           <TabsTrigger value="lists">Lists</TabsTrigger>
         </TabsList>
 
@@ -41,9 +41,9 @@ export function ProfileTabs({ user, onListClick, activeTab = "activity", onTabCh
           <FavoritesTab user={user} />
         </TabsContent>
 
-        {/* <TabsContent value="history" className="mt-6">
+        <TabsContent value="history" className="mt-6">
           <ListeningHistoryTab user={user} />
-        </TabsContent> */}
+        </TabsContent>
 
         <TabsContent value="lists" className="mt-6">
           <ListsTab user={user} onListClick={onListClick} />
