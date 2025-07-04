@@ -13,7 +13,7 @@ model SequelizeMeta {
 
 model albums {
   id                   Int                    @id @default(autoincrement())
-  titulo               String                 @db.VarChar(255)
+  title                String                 @db.VarChar(255)
   release_date         DateTime               @db.Date
   artist_id            Int
   artists              artists                @relation(fields: [artist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -23,8 +23,8 @@ model albums {
 
 model artists {
   id                    Int                     @id @default(autoincrement())
-  nome                  String                  @db.VarChar(255)
-  pais                  String?                 @db.VarChar(100)
+  name                  String                  @db.VarChar(255)
+  country               String?                 @db.VarChar(100)
   albums                albums[]
   musics                musics[]
   user_favorite_artists user_favorite_artists[]
@@ -42,7 +42,7 @@ model follows {
 
 model musics {
   id                   Int                    @id @default(autoincrement())
-  titulo               String                 @db.VarChar(255)
+  title                String                 @db.VarChar(255)
   release_date         DateTime               @db.Date
   duration             Int
   artist_id            Int
@@ -57,7 +57,7 @@ model musics {
 model playlist_musics {
   playlist_id Int
   music_id    Int
-  ordem       Int
+  order       Int
   musics      musics    @relation(fields: [music_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   playlists   playlists @relation(fields: [playlist_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
@@ -66,8 +66,8 @@ model playlist_musics {
 
 model playlists {
   id              Int               @id @default(autoincrement())
-  nome            String            @db.VarChar(255)
-  descricao       String?
+  name            String            @db.VarChar(255)
+  description     String?
   created_at      DateTime?         @default(now()) @db.Timestamp(6)
   user_id         Int
   playlist_musics playlist_musics[]
@@ -77,8 +77,8 @@ model playlists {
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model reviews {
   id         Int       @id @default(autoincrement())
-  nota       Int?
-  comentario String?
+  rate       Int?
+  comment    String?
   created_at DateTime? @default(now()) @db.Timestamp(6)
   user_id    Int
   music_id   Int
@@ -115,9 +115,9 @@ model user_favorite_musics {
 
 model users {
   id                                       Int                     @id @default(autoincrement())
-  nome                                     String                  @db.VarChar(255)
+  name                                     String                  @db.VarChar(255)
   email                                    String                  @unique @db.VarChar(255)
-  senha                                    String                  @db.VarChar(255)
+  password                                 String                  @db.VarChar(255)
   created_at                               DateTime?               @default(now()) @db.Timestamp(6)
   follows_follows_followed_user_idTousers  follows[]               @relation("follows_followed_user_idTousers")
   follows_follows_following_user_idTousers follows[]               @relation("follows_following_user_idTousers")
