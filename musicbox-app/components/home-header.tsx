@@ -2,10 +2,13 @@
 
 import Link from "next/link"
 import { Search, User, Music, Home, TrendingUp, Users, Compass, Settings } from "lucide-react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedGradientText } from "@/components/animated-gradient-text"
+import { useUser } from "@/context/UserContext"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,6 +19,16 @@ import {
 import { NotificationsDropdown } from "@/components/notifications-dropdown"
 
 export function HomeHeader() {
+  const { username } = useUser()
+  const [searchQuery, setSearchQuery] = useState("")
+  const router = useRouter()
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+    }
+  }
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -63,7 +76,14 @@ export function HomeHeader() {
           <div className="hidden md:block">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input type="search" placeholder="Search music, artists, albums..." className="pl-8 w-64" />
+              <Input
+                type="search"
+                placeholder="Search music, artists, albums..."
+                className="pl-8 w-64"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
+              />
             </div>
           </div>
 
