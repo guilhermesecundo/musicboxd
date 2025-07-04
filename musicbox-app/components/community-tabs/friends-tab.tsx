@@ -12,7 +12,7 @@ const friendsActivities = [
     user: {
       name: "Sarah Chen",
       username: "sarahc",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
       isFriend: true,
     },
     type: "rated",
@@ -21,65 +21,25 @@ const friendsActivities = [
     album: {
       title: "Midnights",
       artist: "Taylor Swift",
-      cover: "/placeholder.svg?height=60&width=60",
+      cover: "/prop/taylor.png",
     },
     time: "2 hours ago",
     likes: 12,
     comments: 3,
   },
   {
-    id: 2,
-    user: {
-      name: "Mike Rodriguez",
-      username: "mikerod",
-      avatar: "/placeholder.svg?height=40&width=40",
-      isFriend: true,
-    },
-    type: "added_to_list",
-    content: "Added 'As It Was' to 'Summer Vibes 2024'",
-    track: {
-      title: "As It Was",
-      artist: "Harry Styles",
-      cover: "/placeholder.svg?height=60&width=60",
-    },
-    time: "4 hours ago",
-    likes: 8,
-    comments: 2,
-  },
-  {
-    id: 3,
-    user: {
-      name: "Emma Wilson",
-      username: "emmaw",
-      avatar: "/placeholder.svg?height=40&width=40",
-      isFriend: true,
-    },
-    type: "reviewed",
-    content: "Wrote a review for 'SOUR' by Olivia Rodrigo",
-    review:
-      "This album perfectly captures the emotional rollercoaster of teenage heartbreak. Olivia's songwriting is incredibly mature for her age...",
-    album: {
-      title: "SOUR",
-      artist: "Olivia Rodrigo",
-      cover: "/placeholder.svg?height=60&width=60",
-    },
-    time: "6 hours ago",
-    likes: 24,
-    comments: 7,
-  },
-  {
     id: 4,
     user: {
       name: "Alex Thompson",
       username: "alext",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
       isFriend: true,
     },
     type: "favorited",
     content: "Added The Weeknd to favorite artists",
     artist: {
       name: "The Weeknd",
-      image: "/placeholder.svg?height=60&width=60",
+      image: "/prop/theweeknd.png",
     },
     time: "8 hours ago",
     likes: 15,
@@ -120,9 +80,7 @@ export function FriendsTab() {
                     >
                       {activity.user.name}
                     </Link>
-                    <Badge variant="outline" className="text-xs">
-                      Friend
-                    </Badge>
+                    
                     <span className="text-muted-foreground text-sm">•</span>
                     <span className="text-muted-foreground text-sm">{activity.time}</span>
                   </div>
@@ -165,20 +123,7 @@ export function FriendsTab() {
                           </div>
                         )}
                       </div>
-                      <MusicPlayer
-                        music={{
-                          title: activity.album.title,
-                          artist: activity.album.artist,
-                          album: activity.album.title,
-                          cover: activity.album.cover,
-                          preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-                          artistId: activity.album.artist.toLowerCase().replace(/\s+/g, "-"),
-                        }}
-                      >
-                        <Button variant="ghost" size="sm">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      </MusicPlayer>
+                    
                     </div>
                   )}
 
@@ -190,20 +135,6 @@ export function FriendsTab() {
                         className="w-12 h-12 rounded object-cover"
                       />
                       <div className="flex-1">
-                        <MusicPlayer
-                          music={{
-                            title: activity.track.title,
-                            artist: activity.track.artist,
-                            album: activity.track.title,
-                            cover: activity.track.cover,
-                            preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-                            artistId: activity.track.artist.toLowerCase().replace(/\s+/g, "-"),
-                          }}
-                        >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {activity.track.title}
-                          </p>
-                        </MusicPlayer>
                         <Link
                           href={`/artist/${activity.track.artist.toLowerCase().replace(/\s+/g, "-")}`}
                           className="text-muted-foreground text-xs hover:text-primary transition-colors"
@@ -211,20 +142,7 @@ export function FriendsTab() {
                           {activity.track.artist}
                         </Link>
                       </div>
-                      <MusicPlayer
-                        music={{
-                          title: activity.track.title,
-                          artist: activity.track.artist,
-                          album: activity.track.title,
-                          cover: activity.track.cover,
-                          preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-                          artistId: activity.track.artist.toLowerCase().replace(/\s+/g, "-"),
-                        }}
-                      >
-                        <Button variant="ghost" size="sm">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      </MusicPlayer>
+                      
                     </div>
                   )}
 

@@ -78,7 +78,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
               <Avatar className="h-10 w-10">
                 <AvatarImage
                   src={
-                    user.isCurrentUser ? "/placeholder.svg?height=40&width=40" : "/placeholder.svg?height=40&width=40"
+                    user.isCurrentUser ? "/cgmuniz.png" : "/placeholder.svg?height=40&width=40"
                   }
                   alt={user.displayName}
                 />

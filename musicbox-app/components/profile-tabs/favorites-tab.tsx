@@ -26,7 +26,7 @@ const favoriteSongs = [
     album: "After Hours",
     year: "2020",
     rating: 5,
-    cover: "/placeholder.svg?height=80&width=80",
+    cover: "/prop/theweeknd.png",
     duration: "3:20",
   },
   {
@@ -36,7 +36,7 @@ const favoriteSongs = [
     album: "Fine Line",
     year: "2019",
     rating: 5,
-    cover: "/placeholder.svg?height=80&width=80",
+    cover: "/prop/harry.png",
     duration: "2:54",
   },
   {
@@ -46,7 +46,7 @@ const favoriteSongs = [
     album: "SOUR",
     year: "2021",
     rating: 4,
-    cover: "/placeholder.svg?height=80&width=80",
+    cover: "/prop/olivia.jpg",
     duration: "2:58",
   },
 ]
@@ -58,7 +58,7 @@ const favoriteAlbums = [
     artist: "Taylor Swift",
     year: "2020",
     rating: 5,
-    cover: "/placeholder.svg?height=120&width=120",
+    cover: "/prop/folklore.jpg",
     tracks: 16,
   },
   {
@@ -67,7 +67,7 @@ const favoriteAlbums = [
     artist: "The Weeknd",
     year: "2020",
     rating: 5,
-    cover: "/placeholder.svg?height=120&width=120",
+    cover: "/prop/afterhours.jpg",
     tracks: 14,
   },
   {
@@ -76,7 +76,7 @@ const favoriteAlbums = [
     artist: "Dua Lipa",
     year: "2020",
     rating: 4,
-    cover: "/placeholder.svg?height=120&width=120",
+    cover: "/prop/futurenostalgia.png",
     tracks: 11,
   },
 ]
@@ -86,28 +86,28 @@ const favoriteArtists = [
     id: 1,
     name: "Taylor Swift",
     genre: "Pop/Folk",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/prop/taylor.png",
     albums: 12,
   },
   {
     id: 2,
     name: "The Weeknd",
     genre: "R&B/Pop",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/prop/theweeknd.png",
     albums: 8,
   },
   {
     id: 3,
     name: "Billie Eilish",
     genre: "Alternative/Pop",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/prop/billie.png",
     albums: 3,
   },
   {
     id: 4,
     name: "Dua Lipa",
     genre: "Pop/Dance",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/prop/futurenostalgia.png",
     albums: 4,
   },
 ]

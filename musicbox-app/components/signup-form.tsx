@@ -24,7 +24,7 @@ export function SignUpForm() {
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Redirect to homepage
-    router.push("/home")
+    router.push("/profile/leonel")
   }
 
   return (

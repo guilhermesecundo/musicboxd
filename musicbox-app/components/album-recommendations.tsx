@@ -20,7 +20,7 @@ const mockRecommendations = [
     title: "folklore",
     artist: "Taylor Swift",
     artistId: "taylor-swift",
-    cover: "/placeholder.svg?height=200&width=200",
+    cover: "/prop/folklore.jpg",
     reason: "Same artist",
   },
   {
@@ -28,7 +28,7 @@ const mockRecommendations = [
     title: "Red (Taylor's Version)",
     artist: "Taylor Swift",
     artistId: "taylor-swift",
-    cover: "/placeholder.svg?height=200&width=200",
+    cover: "/prop/red.png",
     reason: "Same artist",
   },
   {
@@ -36,7 +36,7 @@ const mockRecommendations = [
     title: "SOUR",
     artist: "Olivia Rodrigo",
     artistId: "olivia-rodrigo",
-    cover: "/placeholder.svg?height=200&width=200",
+    cover: "/prop/olivia.jpg",
     reason: "Similar style",
   },
 ]

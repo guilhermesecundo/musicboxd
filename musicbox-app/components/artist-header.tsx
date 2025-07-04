@@ -76,16 +76,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
                 <span className="text-sm font-medium bg-white/20 px-2 py-1 rounded">Artist</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-2">{artist.name}</h1>
-              <div className="flex items-center gap-4 text-sm md:text-base">
-                <div className="flex items-center gap-1">
-                  <Headphones className="h-4 w-4" />
-                  <span>{artist.monthlyListeners} monthly listeners</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Users className="h-4 w-4" />
-                  <span>{artist.followers} followers</span>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -97,26 +88,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
           {/* Left Column - Bio and Details */}
           <div className="flex-1 space-y-6">
             {/* Action Buttons */}
-            <div className="flex items-center gap-3 flex-wrap">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600"
-              >
-                <Play className="h-5 w-5 mr-2" />
-                Play
-              </Button>
-              <Button variant={isFollowing ? "outline" : "default"} onClick={handleFollowToggle}>
-                <Heart className={`h-4 w-4 mr-2 ${isFollowing ? "fill-current" : ""}`} />
-                {isFollowing ? "Following" : "Follow"}
-              </Button>
-              <Button variant="outline">
-                <Share className="h-4 w-4 mr-2" />
-                Share
-              </Button>
-              <Button variant="ghost" size="icon">
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </div>
+            
 
             {/* Genres */}
             <div className="flex flex-wrap gap-2">
@@ -135,52 +107,7 @@ export function ArtistHeader({ artist }: ArtistHeaderProps) {
           </div>
 
           {/* Right Column - Artist Info */}
-          <div className="lg:w-80 space-y-4">
-            <Card className="p-4">
-              <h3 className="font-semibold mb-3">Artist Info</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Active since:</span>
-                  <span>{artist.formed}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">From:</span>
-                  <span>{artist.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                  <a
-                    href={artist.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    Official Website
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="font-semibold mb-3">Social Media</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Instagram</span>
-                  <span>{artist.socialMedia.instagram}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Twitter</span>
-                  <span>{artist.socialMedia.twitter}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Spotify</span>
-                  <span className="text-xs font-mono">{artist.socialMedia.spotify}</span>
-                </div>
-              </div>
-            </Card>
-          </div>
+          
         </div>
       </div>
     </Card>

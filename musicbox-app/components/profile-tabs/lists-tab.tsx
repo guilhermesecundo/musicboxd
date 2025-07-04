@@ -23,74 +23,25 @@ interface ListsTabProps {
 const musicLists = [
   {
     id: 1,
-    title: "Summer Vibes 2024",
-    description: "Perfect songs for those warm summer days and road trips",
-    trackCount: 47,
+    title: "Playlist só as boas",
+    description: "Só as melhores que mais gosto",
+    trackCount: 4,
     isPublic: true,
     coverImages: [
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
+      "/prop/theweeknd.png",
+      "/prop/harry.png",
+      "/prop/futurenostalgia.png",
+      "/prop/olivia.jpg",
     ],
     createdAt: "2 weeks ago",
     likes: 23,
-  },
-  {
-    id: 2,
-    title: "Indie Rock Essentials",
-    description: "The best indie rock tracks that define the genre",
-    trackCount: 89,
-    isPublic: true,
-    coverImages: [
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-    ],
-    createdAt: "1 month ago",
-    likes: 156,
-  },
-  {
-    id: 3,
-    title: "Late Night Study",
-    description: "Chill beats and ambient sounds for focused work sessions",
-    trackCount: 32,
-    isPublic: false,
-    coverImages: [
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-    ],
-    createdAt: "3 weeks ago",
-    likes: 0,
-  },
-  {
-    id: 4,
-    title: "Workout Motivation",
-    description: "High-energy tracks to power through any workout",
-    trackCount: 65,
-    isPublic: true,
-    coverImages: [
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-      "/placeholder.svg?height=60&width=60",
-    ],
-    createdAt: "2 months ago",
-    likes: 89,
   },
 ]
 
 export function ListsTab({ user, onListClick }: ListsTabProps) {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false)
 
-  const handleCreateList = (listData: any) => {
-    console.log("Creating list:", listData)
-    // Here you would typically send the data to your backend
-    // For now, we'll just log it
-  }
+  const handleCreateList = (listData: any) => {}
 
   return (
     <div className="space-y-6">

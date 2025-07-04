@@ -12,36 +12,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const [music, artists, albums, users] = await Promise.all([
       prisma.musics.findMany({
-        where: { title: { contains: q, mode: "insensitive" } },
+        where: { titulo: { contains: q, mode: "insensitive" } },
         include: {
           albums: {
             select: {
               id: true,
-              title: true,
+              titulo: true,
             },
           },
           artists: {
             select: {
-              name: true,
+              nome: true,
             },
           },
         },
       }),
       prisma.artists.findMany({
-        where: { name: { contains: q, mode: "insensitive" } },
+        where: { nome: { contains: q, mode: "insensitive" } },
       }),
       prisma.albums.findMany({
-        where: { title: { contains: q, mode: "insensitive" } },
+        where: { titulo: { contains: q, mode: "insensitive" } },
         include: {
           artists: {
             select: {
-              name: true,
+              nome: true,
             },
           },
         },
       }),
       prisma.users.findMany({
-        where: { name: { contains: q, mode: "insensitive" } },
+        where: { nome: { contains: q, mode: "insensitive" } },
       }),
     ])
 

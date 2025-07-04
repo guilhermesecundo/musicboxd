@@ -12,7 +12,7 @@ const generalPosts = [
     user: {
       name: "Music Enthusiast",
       username: "musiclover99",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Anyone else think that 'Flowers' by Miley Cyrus is going to be the song of the year? The production is absolutely incredible and the lyrics hit different 🌸",
@@ -27,7 +27,7 @@ const generalPosts = [
     user: {
       name: "Vinyl Hunter",
       username: "vinylfinder",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Found a first pressing of 'Abbey Road' at a local record store today! Sometimes the best finds are hiding in plain sight. What's your best vinyl discovery?",
@@ -46,7 +46,7 @@ const generalPosts = [
     user: {
       name: "Concert Goer",
       username: "livemusicfan",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Just got back from the most incredible concert! The energy was absolutely electric. There's nothing quite like experiencing music live with thousands of other fans.",
@@ -60,7 +60,7 @@ const generalPosts = [
     user: {
       name: "Indie Discoverer",
       username: "indievibes",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Discovered this amazing indie artist through a random Spotify recommendation. Their sound is so unique - like if Radiohead and Bon Iver had a musical baby 🎵",
@@ -79,7 +79,7 @@ const generalPosts = [
     user: {
       name: "Genre Explorer",
       username: "allgenres",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Hot take: Jazz fusion from the 70s is severely underrated. The technical skill and creativity in albums like 'Bitches Brew' still sounds futuristic today.",
@@ -93,7 +93,7 @@ const generalPosts = [
     user: {
       name: "Playlist Curator",
       username: "playlistpro",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Spent 3 hours perfecting my 'Rainy Day Vibes' playlist. The flow between songs is everything - it's like creating a musical journey through emotions ☔",
@@ -148,128 +148,15 @@ export function GeneralTab() {
                     >
                       @{post.user.username}
                     </Link>
-                    {post.trending && (
-                      <Badge variant="default" className="text-xs bg-orange-500">
-                        <TrendingUp className="h-3 w-3 mr-1" />
-                        Trending
-                      </Badge>
-                    )}
+                    
                     <span className="text-muted-foreground text-sm">•</span>
                     <span className="text-muted-foreground text-sm">{post.time}</span>
                   </div>
 
                   <p className="text-sm mb-3">{post.content}</p>
 
-                  {/* Post Content */}
-                  {post.track && (
-                    <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
-                      <img
-                        src={post.track.cover || "/placeholder.svg"}
-                        alt={post.track.title}
-                        className="w-12 h-12 rounded object-cover"
-                      />
-                      <div className="flex-1">
-                        <MusicPlayer
-                          music={{
-                            title: post.track.title,
-                            artist: post.track.artist,
-                            album: post.track.title,
-                            cover: post.track.cover,
-                            preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-                            artistId: post.track.artist.toLowerCase().replace(/\s+/g, "-"),
-                          }}
-                        >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {post.track.title}
-                          </p>
-                        </MusicPlayer>
-                        <Link
-                          href={`/artist/${post.track.artist.toLowerCase().replace(/\s+/g, "-")}`}
-                          className="text-muted-foreground text-xs hover:text-primary transition-colors"
-                        >
-                          {post.track.artist}
-                        </Link>
-                      </div>
-                      <MusicPlayer
-                        music={{
-                          title: post.track.title,
-                          artist: post.track.artist,
-                          album: post.track.title,
-                          cover: post.track.cover,
-                          preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-                          artistId: post.track.artist.toLowerCase().replace(/\s+/g, "-"),
-                        }}
-                      >
-                        <Button variant="ghost" size="sm">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      </MusicPlayer>
-                    </div>
-                  )}
 
-                  {post.album && (
-                    <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
-                      <img
-                        src={post.album.cover || "/placeholder.svg"}
-                        alt={post.album.title}
-                        className="w-12 h-12 rounded object-cover"
-                      />
-                      <div className="flex-1">
-                        <MusicPlayer
-                          music={{
-                            title: post.album.title,
-                            artist: post.album.artist,
-                            album: post.album.title,
-                            cover: post.album.cover,
-                            preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-                            artistId: post.album.artist.toLowerCase().replace(/\s+/g, "-"),
-                          }}
-                        >
-                          <p className="font-medium text-sm cursor-pointer hover:text-primary transition-colors">
-                            {post.album.title}
-                          </p>
-                        </MusicPlayer>
-                        <Link
-                          href={`/artist/${post.album.artist.toLowerCase().replace(/\s+/g, "-")}`}
-                          className="text-muted-foreground text-xs hover:text-primary transition-colors"
-                        >
-                          {post.album.artist}
-                        </Link>
-                      </div>
-                      <MusicPlayer
-                        music={{
-                          title: post.album.title,
-                          artist: post.album.artist,
-                          album: post.album.title,
-                          cover: post.album.cover,
-                          preview: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-                          artistId: post.album.artist.toLowerCase().replace(/\s+/g, "-"),
-                        }}
-                      >
-                        <Button variant="ghost" size="sm">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      </MusicPlayer>
-                    </div>
-                  )}
-
-                  {post.playlist && (
-                    <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg mb-3">
-                      <img
-                        src={post.playlist.cover || "/placeholder.svg"}
-                        alt={post.playlist.title}
-                        className="w-12 h-12 rounded object-cover"
-                      />
-                      <div className="flex-1">
-                        <p className="font-medium text-sm">{post.playlist.title}</p>
-                        <p className="text-muted-foreground text-xs">{post.playlist.trackCount} tracks</p>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        <Play className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  )}
-
+                  
                   <div className="flex items-center gap-4">
                     <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-pink-500">
                       <Heart className="h-4 w-4 mr-1" />

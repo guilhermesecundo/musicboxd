@@ -23,7 +23,7 @@ const mockReviews = [
     id: 1,
     user: {
       name: "Sarah Johnson",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
       username: "sarahj_music",
     },
     rating: 5,
@@ -37,7 +37,7 @@ const mockReviews = [
     id: 2,
     user: {
       name: "Mike Chen",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
       username: "mikechen92",
     },
     rating: 4,
@@ -50,7 +50,7 @@ const mockReviews = [
     id: 3,
     user: {
       name: "Emma Wilson",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
       username: "emmaw_reviews",
     },
     rating: 5,

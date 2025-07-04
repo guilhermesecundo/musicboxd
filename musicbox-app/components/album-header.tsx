@@ -61,7 +61,7 @@ export function AlbumHeader({ album }: AlbumHeaderProps) {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src={album.backgroundImage || "/placeholder.svg"}
+          src={album.backgroundImage || "/prop/midnights.png"}
           alt={album.title}
           fill
           className="object-cover opacity-20 blur-sm"
@@ -105,13 +105,7 @@ export function AlbumHeader({ album }: AlbumHeaderProps) {
                 <Calendar className="h-4 w-4" />
                 {formatDate(album.releaseDate)}
               </div>
-              <span>•</span>
-              <div className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                {album.duration}
-              </div>
-              <span>•</span>
-              <span>{album.trackCount} tracks</span>
+              
             </div>
 
             <div className="flex items-center gap-4 mb-6">
@@ -119,11 +113,6 @@ export function AlbumHeader({ album }: AlbumHeaderProps) {
                 <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                 <span className="font-semibold">{album.rating}</span>
                 <span className="text-muted-foreground">({album.reviewCount.toLocaleString()} reviews)</span>
-              </div>
-              <span>•</span>
-              <div className="flex items-center gap-1">
-                <Users className="h-4 w-4" />
-                <span>{album.plays} plays</span>
               </div>
               <span>•</span>
               <div className="flex items-center gap-1">
@@ -146,13 +135,7 @@ export function AlbumHeader({ album }: AlbumHeaderProps) {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-4">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600"
-            >
-              <Play className="h-5 w-5 mr-2" />
-              Play Album
-            </Button>
+            
             <Button variant="outline" size="lg">
               <Heart className="h-5 w-5 mr-2" />
               Like

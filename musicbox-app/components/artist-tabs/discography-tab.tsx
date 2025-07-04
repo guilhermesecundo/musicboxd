@@ -23,7 +23,7 @@ const discography = [
     title: "Midnights",
     type: "Studio Album",
     releaseDate: "2022-10-21",
-    cover: "/placeholder.svg?height=300&width=300",
+    cover: "/prop/midnights.png",
     trackCount: 13,
     duration: "44:08",
     plays: "5.2B",
@@ -58,7 +58,7 @@ const discography = [
     title: "Red (Taylor's Version)",
     type: "Re-recorded Album",
     releaseDate: "2021-11-12",
-    cover: "/placeholder.svg?height=300&width=300",
+    cover: "/prop/red.png",
     trackCount: 30,
     duration: "130:21",
     plays: "3.8B",
@@ -93,7 +93,7 @@ const discography = [
     title: "folklore",
     type: "Studio Album",
     releaseDate: "2020-07-24",
-    cover: "/placeholder.svg?height=300&width=300",
+    cover: "/prop/folklore.jpg",
     trackCount: 16,
     duration: "63:29",
     plays: "4.1B",
@@ -124,7 +124,7 @@ const discography = [
     title: "Lover",
     type: "Studio Album",
     releaseDate: "2019-08-23",
-    cover: "/placeholder.svg?height=300&width=300",
+    cover: "/prop/lover.png",
     trackCount: 18,
     duration: "61:49",
     plays: "3.2B",
@@ -155,7 +155,7 @@ const discography = [
     title: "reputation",
     type: "Studio Album",
     releaseDate: "2017-11-10",
-    cover: "/placeholder.svg?height=300&width=300",
+    cover: "/prop/reputation.jpg",
     trackCount: 15,
     duration: "55:24",
     plays: "2.9B",
@@ -258,21 +258,11 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                         <Calendar className="h-4 w-4" />
                         {formatDate(album.releaseDate)}
                       </div>
-                      <span>•</span>
-                      <span>{album.trackCount} tracks</span>
-                      <span>•</span>
-                      <span>{album.duration}</span>
-                      <span>•</span>
-                      <span>{album.plays} plays</span>
                     </div>
                     <p className="text-muted-foreground mb-4">{album.description}</p>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <Button className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600">
-                      <Play className="h-4 w-4 mr-2" />
-                      Play Album
-                    </Button>
                     <Button variant="outline">
                       <Heart className="h-4 w-4 mr-2" />
                       Save
@@ -317,9 +307,7 @@ export function DiscographyTab({ artist }: DiscographyTabProps) {
                             preview: track.preview,
                           }}
                         >
-                          <Button variant="ghost" size="sm">
-                            <Play className="h-4 w-4" />
-                          </Button>
+                          
                         </MusicPlayer>
                         <Button variant="ghost" size="sm">
                           <Plus className="h-4 w-4" />

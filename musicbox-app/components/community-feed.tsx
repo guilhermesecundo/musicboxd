@@ -10,7 +10,7 @@ const posts = [
     user: {
       name: "David Kim",
       username: "davidk",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Just discovered this amazing indie band called 'The Midnight'. Their synthwave sound is absolutely incredible! Anyone else listening to them?",
@@ -24,7 +24,7 @@ const posts = [
     user: {
       name: "Lisa Park",
       username: "lisap",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Hot take: Folklore is Taylor Swift's best album. The storytelling and production are just *chef's kiss* 🤌",
@@ -38,7 +38,7 @@ const posts = [
     user: {
       name: "James Wilson",
       username: "jamesw",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     content:
       "Currently obsessed with Billie Eilish's new track. The way she experiments with different sounds never fails to amaze me.",

@@ -11,16 +11,16 @@ const getUserData = (username: string) => {
   const users = {
     johndoe: {
       id: 1,
-      username: "johndoe",
-      displayName: "John Doe",
-      bio: "Music enthusiast and vinyl collector. Always discovering new sounds and sharing the journey with fellow music lovers. 🎵",
-      profilePicture: "/placeholder.svg?height=120&width=120",
-      backgroundPicture: "/placeholder.svg?height=300&width=800",
-      followers: 1247,
-      following: 892,
+      username: "leonel",
+      displayName: "Leonel Morgado",
+      bio: "Hi, I'm a new user!",
+      profilePicture: "/prop/new.jpg",
+      backgroundPicture: "/prop/back.jpg",
+      followers: 0,
+      following: 0,
       isCurrentUser: true,
-      joinedDate: "March 2023",
-      location: "San Francisco, CA",
+      joinedDate: "July 2025",
+      location: "Brazil",
     },
     sarahj: {
       id: 2,
@@ -35,6 +35,19 @@ const getUserData = (username: string) => {
       joinedDate: "January 2023",
       location: "Brooklyn, NY",
     },
+    cgmuniz: {
+      id: 3,
+      username: "cgmuniz",
+      displayName: "Caua Gabriel",
+      bio: "Goth rock lover",
+      profilePicture: "/cgmuniz.png",
+      backgroundPicture: "/cgmunizfundo.jpg",
+      followers: 13,
+      following: 20,
+      isCurrentUser: true,
+      joinedDate: "July 2025",
+      location: "Brazil",
+    }
   }
 
   return users[username as keyof typeof users] || users.johndoe

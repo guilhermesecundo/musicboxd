@@ -72,7 +72,7 @@ const notifications = [
 
 export function NotificationsDropdown() {
   const [notificationList, setNotificationList] = useState(notifications)
-  const unreadCount = notificationList.filter((n) => !n.read).length
+  const unreadCount = 0
 
   const markAsRead = (id: number) => {
     setNotificationList((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))

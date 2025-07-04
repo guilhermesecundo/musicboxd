@@ -42,14 +42,14 @@ export function SearchAllTab({ results }: SearchAllTabProps) {
                 ? new Date(track.release_date).getFullYear()
                 : "Unknown"
               const albumId = track.albums?.id
-              const artistName = track.artists?.name || "Unknown Artist"
+              const artistName = track.artists?.nome || "Unknown Artist"
 
               return (
                 <Link key={track.id} href={`/album/${albumId}`}>
                   <Card className="group hover:bg-muted/50 transition-colors cursor-pointer">
                     <CardContent className="p-4 text-center">
                       <div className="space-y-1">
-                        <h3 className="font-medium truncate">{track.title}</h3>
+                        <h3 className="font-medium truncate">{track.titulo}</h3>
                         <p className="text-sm text-muted-foreground truncate">{artistName}</p>
                         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
                           <span>{formatDuration(track.duration)}</span>
@@ -77,12 +77,12 @@ export function SearchAllTab({ results }: SearchAllTabProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {results.artists.slice(0, 8).map((artist) => (
-              <Link key={artist.id} href={`/artist/${artist.name}`}>
+              <Link key={artist.id} href={`/artist/${artist.nome}`}>
                 <Card className="group hover:bg-muted/50 transition-colors cursor-pointer">
                   <CardContent className="p-4 text-center">
                     <div className="space-y-1">
                       <div className="flex items-center justify-center gap-2">
-                        <h3 className="font-medium">{artist.name}</h3>
+                        <h3 className="font-medium">{artist.nome}</h3>
                         {artist.verified && <CheckCircle className="h-4 w-4 text-blue-500" />}
                       </div>
                       <p className="text-sm text-muted-foreground">Artist</p>
@@ -117,14 +117,14 @@ export function SearchAllTab({ results }: SearchAllTabProps) {
                 <Card className="group hover:bg-muted/50 transition-colors cursor-pointer">
                   <CardContent className="p-4">
                     <div className="space-y-1">
-                      <h3 className="font-medium truncate">{album.title}</h3>
+                      <h3 className="font-medium truncate">{album.titulo}</h3>
                       <p className="text-sm text-muted-foreground truncate">{album.artist}</p>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
                         <Calendar className="h-3 w-3" />
                         <span>{album.release_date ? new Date(album.release_date).getFullYear() : "Unknown"}</span>
                         <span>•</span>
                         <div className="flex items-center gap-1">
-                          <span>{album.artists.name ?? "N/A"}</span>
+                          <span>{album.artists.nome ?? "N/A"}</span>
                         </div>
                       </div>
                     </div>
@@ -147,7 +147,7 @@ export function SearchAllTab({ results }: SearchAllTabProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {results.users.slice(0, 8).map((user) => (
-              <Link key={user.id} href={`/profile/${user.name}`}>
+              <Link key={user.id} href={`/profile/${user.nome}`}>
                 <Card className="group hover:bg-muted/50 transition-colors cursor-pointer">
                   <CardContent className="p-4 text-center">
                     <div className="relative w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden">
@@ -160,7 +160,7 @@ export function SearchAllTab({ results }: SearchAllTabProps) {
                     </div>
                     <div className="space-y-1">
                       <div className="flex items-center justify-center gap-2">
-                        <h3 className="font-medium">{user.name}</h3>
+                        <h3 className="font-medium">{user.nome}</h3>
                         {user.verified && <CheckCircle className="h-4 w-4 text-blue-500" />}
                       </div>
                       <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">

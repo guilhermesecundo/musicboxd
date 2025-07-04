@@ -14,9 +14,8 @@ export function CommunityTabs() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Tabs defaultValue={defaultTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="friends">Friends</TabsTrigger>
-          <TabsTrigger value="followed">Following</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="friends">Following</TabsTrigger>
           <TabsTrigger value="general">General</TabsTrigger>
         </TabsList>
 

@@ -11,7 +11,7 @@ const activities = [
     user: {
       name: "Sarah Johnson",
       username: "sarahj",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     action: "liked",
     target: "Blinding Lights by The Weeknd",
@@ -31,7 +31,7 @@ const activities = [
     user: {
       name: "Mike Chen",
       username: "mikechen",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     action: "added to list",
     target: "Summer Vibes 2024",
@@ -44,7 +44,7 @@ const activities = [
     user: {
       name: "Emma Wilson",
       username: "emmaw",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     action: "rated",
     target: "Folklore by Taylor Swift",
@@ -65,7 +65,7 @@ const activities = [
     user: {
       name: "Alex Rodriguez",
       username: "alexr",
-      avatar: "/placeholder.svg?height=40&width=40",
+      avatar: "a",
     },
     action: "favorited",
     target: "Dua Lipa",

@@ -40,7 +40,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
       {/* Background Image */}
       <div className="relative h-48 md:h-64 bg-gradient-to-r from-blue-500 to-pink-500">
         <Image
-          src={user.backgroundPicture || "/placeholder.svg"}
+          src={user.backgroundPicture || ""}
           alt="Profile background"
           fill
           className="object-cover"

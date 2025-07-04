@@ -52,7 +52,7 @@ const getListTracks = (listId: number) => {
       album: "After Hours",
       albumId: "after-hours",
       duration: "3:20",
-      coverArt: "/placeholder.svg?height=50&width=50",
+      coverArt: "/prop/theweeknd.png",
       isLiked: true,
       plays: "1.2B",
     },
@@ -63,7 +63,7 @@ const getListTracks = (listId: number) => {
       album: "Fine Line",
       albumId: "fine-line",
       duration: "2:54",
-      coverArt: "/placeholder.svg?height=50&width=50",
+      coverArt: "/prop/harry.png",
       isLiked: false,
       plays: "890M",
     },
@@ -74,7 +74,7 @@ const getListTracks = (listId: number) => {
       album: "Future Nostalgia",
       albumId: "future-nostalgia",
       duration: "3:23",
-      coverArt: "/placeholder.svg?height=50&width=50",
+      coverArt: "/prop/futurenostalgia.png",
       isLiked: true,
       plays: "756M",
     },
@@ -85,21 +85,10 @@ const getListTracks = (listId: number) => {
       album: "SOUR",
       albumId: "sour",
       duration: "2:58",
-      coverArt: "/placeholder.svg?height=50&width=50",
+      coverArt: "/prop/olivia.jpg",
       isLiked: false,
       plays: "645M",
-    },
-    {
-      id: 5,
-      title: "Stay",
-      artist: "The Kid LAROI & Justin Bieber",
-      album: "F*CK LOVE 3: OVER YOU",
-      albumId: "fck-love-3",
-      duration: "2:21",
-      coverArt: "/placeholder.svg?height=50&width=50",
-      isLiked: true,
-      plays: "534M",
-    },
+    }
   ]
 
   return tracks.slice(0, Math.min(tracks.length, listId === 1 ? 5 : listId === 2 ? 4 : 3))
@@ -131,11 +120,11 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
     const newTrack = {
       id: Date.now(),
       title: trackTitle,
-      artist: "Various Artist",
-      album: "Various Album",
-      albumId: "various-album",
+      artist: "Billie Eilish",
+      album: "Happier than ever",
+      albumId: "Happier than ever",
       duration: "3:00",
-      coverArt: "/placeholder.svg?height=50&width=50",
+      coverArt: "/prop/billie.png",
       isLiked: false,
       plays: "1M",
     }
@@ -182,7 +171,7 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
           <div className="grid grid-cols-2 gap-1 w-full h-full">
             {list.coverImages.map((image: string, index: number) => (
               <div key={index} className="relative">
-                <Image src={image || "/placeholder.svg"} alt="" fill className="object-cover" />
+                <Image src={image || "/prop/billie.png"} alt="" fill className="object-cover" />
               </div>
             ))}
           </div>
@@ -241,23 +230,12 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3 animate-in fade-in-0 slide-in-from-bottom-4 duration-300 delay-700">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600 transition-all duration-200"
-            >
-              <Play className="h-5 w-5 mr-2" />
-              Play
-            </Button>
-            <Button size="lg" variant="outline" className="transition-all duration-200">
-              <Shuffle className="h-5 w-5 mr-2" />
-              Shuffle
-            </Button>
             <Button size="lg" variant="outline" className="transition-all duration-200">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="transition-all duration-200">
+            {/* <Button size="lg" variant="outline" className="transition-all duration-200">
               <Share2 className="h-5 w-5" />
-            </Button>
+            </Button> */}
             {user.isCurrentUser && (
               <Button
                 size="lg"
@@ -415,10 +393,9 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
       </Card>
 
       {/* List Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-500">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-500 delay-500">
         {[
           { icon: Music2, value: tracks.length, label: "Total Tracks" },
-          { icon: Clock, value: formatTotalDuration(totalDuration), label: "Total Duration" },
           { icon: Heart, value: list.likes, label: "Total Likes" },
         ].map((stat, index) => (
           <Card key={index} className="transition-all duration-200 hover:shadow-lg">
