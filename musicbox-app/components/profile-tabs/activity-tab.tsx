@@ -9,7 +9,6 @@ import { MusicPlayer } from "@/components/music-player"
 interface User {
   id: number
   username: string
-  displayName: string
   isCurrentUser: boolean
 }
 
@@ -80,10 +79,10 @@ export function ActivityTab({ user }: ActivityTabProps) {
                   src={
                     user.isCurrentUser ? "/placeholder.svg?height=40&width=40" : "/placeholder.svg?height=40&width=40"
                   }
-                  alt={user.displayName}
+                  alt={user.username}
                 />
                 <AvatarFallback>
-                  {user.displayName
+                  {user.username
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
@@ -92,7 +91,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-medium text-sm">{user.displayName}</span>
+                  <span className="font-medium text-sm">{user.username}</span>
                   <span className="text-muted-foreground text-xs">@{user.username}</span>
                   <span className="text-muted-foreground text-xs">•</span>
                   <span className="text-muted-foreground text-xs">{activity.time}</span>
@@ -115,8 +114,6 @@ export function ActivityTab({ user }: ActivityTabProps) {
                       onClick={() => {
                         if (activity.type === "favorite") {
                           handleArtistClick(activity.target)
-                        } else if (activity.album) {
-                          handleAlbumClick(activity.target)
                         }
                       }}
                       className="font-medium hover:text-primary transition-colors"
@@ -133,7 +130,6 @@ export function ActivityTab({ user }: ActivityTabProps) {
                   )}
                 </div>
 
-                {activity.album && <div className="text-xs text-muted-foreground mb-2">{activity.album}</div>}
                 {activity.review && <div className="text-sm bg-muted/50 p-3 rounded-lg">"{activity.review}"</div>}
               </div>
 

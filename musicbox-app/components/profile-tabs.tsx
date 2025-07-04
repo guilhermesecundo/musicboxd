@@ -8,15 +8,11 @@ import { ListsTab } from "./profile-tabs/lists-tab"
 interface User {
   id: number
   username: string
-  displayName: string
-  bio: string
   profilePicture: string
-  backgroundPicture: string
   followers: number
   following: number
   isCurrentUser: boolean
   joinedDate: string
-  location: string
 }
 
 interface ProfileTabsProps {

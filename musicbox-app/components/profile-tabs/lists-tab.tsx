@@ -11,7 +11,6 @@ import { CreateListDialog } from "@/components/create-list-dialog"
 interface User {
   id: number
   username: string
-  displayName: string
   isCurrentUser: boolean
 }
 
@@ -99,7 +98,7 @@ export function ListsTab({ user, onListClick }: ListsTabProps) {
         <div>
           <h2 className="text-2xl font-bold">Music Lists</h2>
           <p className="text-muted-foreground">
-            {user.isCurrentUser ? "Your" : `${user.displayName}'s`} curated music collections
+            {user.isCurrentUser ? "Your" : `${user.username}'s`} curated music collections
           </p>
         </div>
         {user.isCurrentUser && (
@@ -181,7 +180,7 @@ export function ListsTab({ user, onListClick }: ListsTabProps) {
             <p className="text-muted-foreground mb-4">
               {user.isCurrentUser
                 ? "Create your first music list to organize your favorite tracks"
-                : `${user.displayName} hasn't created any public lists yet`}
+                : `${user.username} hasn't created any public lists yet`}
             </p>
             {user.isCurrentUser && (
               <Button

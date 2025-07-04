@@ -31,7 +31,6 @@ import { MusicPlayer } from "@/components/music-player"
 interface User {
   id: number
   username: string
-  displayName: string
   profilePicture: string
   isCurrentUser: boolean
 }
@@ -217,9 +216,9 @@ export function ListDetailView({ list, user, onBack }: ListDetailViewProps) {
             <div className="flex items-center gap-2 animate-in fade-in-0 slide-in-from-left-4 duration-300 delay-500">
               <Avatar className="h-6 w-6">
                 <AvatarImage src={user.profilePicture || "/placeholder.svg"} />
-                <AvatarFallback>{user.displayName[0]}</AvatarFallback>
+                <AvatarFallback>{user.username[0]}</AvatarFallback>
               </Avatar>
-              <span className="font-medium">{user.displayName}</span>
+              <span className="font-medium">{user.username}</span>
               {/* <span className="text-muted-foreground">•</span>
               <span className="text-muted-foreground">{tracks.length} songs</span>
               <span className="text-muted-foreground">•</span>

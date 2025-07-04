@@ -10,7 +10,6 @@ import { MusicPlayer } from "@/components/music-player"
 interface User {
   id: number
   username: string
-  displayName: string
   isCurrentUser: boolean
 }
 

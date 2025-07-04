@@ -11,15 +11,11 @@ import { usePathname } from "next/navigation"
 interface User {
   id: number
   username: string
-  displayName: string
-  bio: string
   profilePicture: string
-  backgroundPicture: string
   followers: number
   following: number
   isCurrentUser: boolean
   joinedDate: string
-  location: string
 }
 
 interface ProfileHeaderProps {
@@ -69,7 +65,7 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           <div className="relative w-32 h-32 rounded-full border-4 border-background bg-background overflow-hidden">
             <Image
               src={user.profilePicture || "/placeholder.svg"}
-              alt={user.displayName}
+              alt={user.username}
               fill
               className="object-cover"
             />
@@ -91,21 +87,11 @@ export function ProfileHeader({ user }: ProfileHeaderProps) {
           <div className="flex-1">
             {/* Name and Username */}
             <div className="mb-2">
-              <h1 className="text-2xl font-bold">{user.displayName}</h1>
               <p className="text-muted-foreground">@{user.username}</p>
             </div>
 
-            {/* Bio */}
-            <p className="text-sm mb-3 max-w-2xl">{user.bio}</p>
-
             {/* Meta Information */}
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
-              {user.location && (
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  {user.location}
-                </div>
-              )}
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 Joined {user.joinedDate}
