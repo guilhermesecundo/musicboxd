@@ -103,7 +103,7 @@ const getFollowersData = (username: string) => {
 }
 
 export default function FollowersPage({ params }: FollowersPageProps) {
-  const { username } = React.use(params)
+  const { username } = params
 
   const searchParams = useSearchParams()
   const defaultTab = searchParams.get("tab") || "followers"
